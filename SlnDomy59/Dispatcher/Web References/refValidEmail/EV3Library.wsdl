@@ -1,0 +1,1422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.serviceobjects.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EV3Library" targetNamespace="http://www.serviceobjects.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ValidateEmailAddress_GETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="AllowCorrections" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Timeout" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_GETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ValidateEmailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailInfo">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Error" nillable="true" type="tns:Error">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Debug" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ValidateEmailResponse" nillable="true" type="tns:ValidateEmailResponse" />
+      <xs:complexType name="ValidateEmailInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Score" type="xs:int" />
+          <xs:element minOccurs="0" name="IsDeliverable" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="EmailAddressIn" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="EmailAddressOut" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="EmailCorrected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Box" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Domain" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="TopLevelDomain" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="TopLevelDomainDescription" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="IsSMTPServerGood" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="IsCatchAllDomain" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="IsSMTPMailBoxGood" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="WarningCodes" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="WarningDescriptions" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="NotesCodes" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="NotesDescriptions" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailInfo" />
+      <xs:complexType name="Error">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DescCode" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Error" nillable="true" type="tns:Error" />
+      <xs:element name="ValidateEmailAddress_QUERYGETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="AllowCorrections" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Timeout" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_QUERYGETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_GETJSON">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="AllowCorrections" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Timeout" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_GETJSONResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_POST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="AllowCorrections" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Timeout" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_POSTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_PUT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_PUTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_DELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress_DELETEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddress">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="AllowCorrections" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Timeout" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailAddressResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailAddressResult" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_GETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_GETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_QUERYGETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_QUERYGETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_GETJSON">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_GETJSONResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_POST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_POSTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_PUT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_PUTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_DELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull_DELETEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFull">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailFullResult" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_GETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_GETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_QUERYGETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_QUERYGETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_GETJSON">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_GETJSONResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_POST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_POSTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_PUT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_PUTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_DELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast_DELETEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFast">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailFastResult" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_GETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_GETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_QUERYGETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_QUERYGETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_GETJSON">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_GETJSONResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_POST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_POSTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_PUT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_PUTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_DELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections_DELETEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrections">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFullNoCorrectionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailFullNoCorrectionsResult" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_GETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_GETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_QUERYGETXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_QUERYGETXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_GETJSON">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_GETJSONResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_POST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_POSTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_PUT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_PUTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_DELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections_DELETEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailInfo" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrections">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="LicenseKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ValidateEmailFastNoCorrectionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ValidateEmailFastNoCorrectionsResult" nillable="true" type="tns:ValidateEmailResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_GETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_GETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_GETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_GETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_QUERYGETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_QUERYGETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_QUERYGETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_QUERYGETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_GETJSON_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_GETJSON" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_GETJSON_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_GETJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_POST_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_POST" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_POST_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_POSTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_PUT_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_PUT" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_PUT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_PUTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_DELETE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_DELETE" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_DELETE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress_DELETEResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddress" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_GETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_GETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_GETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_GETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_QUERYGETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_QUERYGETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_QUERYGETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_QUERYGETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_GETJSON_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_GETJSON" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_GETJSON_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_GETJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_POST_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_POST" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_POST_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_POSTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_PUT_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_PUT" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_PUT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_PUTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_DELETE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_DELETE" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_DELETE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull_DELETEResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFull" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFull_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_GETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_GETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_GETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_GETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_QUERYGETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_QUERYGETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_QUERYGETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_QUERYGETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_GETJSON_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_GETJSON" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_GETJSON_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_GETJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_POST_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_POST" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_POST_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_POSTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_PUT_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_PUT" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_PUT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_PUTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_DELETE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_DELETE" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_DELETE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast_DELETEResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFast" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFast_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_GETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_GETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_GETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_GETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_QUERYGETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_QUERYGETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_QUERYGETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_QUERYGETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_GETJSON_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_GETJSON" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_GETJSON_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_GETJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_POST_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_POST" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_POST_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_POSTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_PUT_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_PUT" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_PUT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_PUTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_DELETE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_DELETE" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_DELETE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections_DELETEResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrections" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFullNoCorrections_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFullNoCorrectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_GETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_GETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_GETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_GETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_QUERYGETXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_QUERYGETXML" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_QUERYGETXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_QUERYGETXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_GETJSON_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_GETJSON" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_GETJSON_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_GETJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_POST_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_POST" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_POST_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_POSTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_PUT_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_PUT" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_PUT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_PUTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_DELETE_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_DELETE" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_DELETE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections_DELETEResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrections" />
+  </wsdl:message>
+  <wsdl:message name="IEV3Library_ValidateEmailFastNoCorrections_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateEmailFastNoCorrectionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEV3Library">
+    <wsdl:operation name="ValidateEmailAddress_GETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_GETXML" message="tns:IEV3Library_ValidateEmailAddress_GETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_GETXMLResponse" message="tns:IEV3Library_ValidateEmailAddress_GETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_QUERYGETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_QUERYGETXML" message="tns:IEV3Library_ValidateEmailAddress_QUERYGETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_QUERYGETXMLResponse" message="tns:IEV3Library_ValidateEmailAddress_QUERYGETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_GETJSON">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_GETJSON" message="tns:IEV3Library_ValidateEmailAddress_GETJSON_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_GETJSONResponse" message="tns:IEV3Library_ValidateEmailAddress_GETJSON_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_POST">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_POST" message="tns:IEV3Library_ValidateEmailAddress_POST_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_POSTResponse" message="tns:IEV3Library_ValidateEmailAddress_POST_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_PUT">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_PUT" message="tns:IEV3Library_ValidateEmailAddress_PUT_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_PUTResponse" message="tns:IEV3Library_ValidateEmailAddress_PUT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_DELETE">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_DELETE" message="tns:IEV3Library_ValidateEmailAddress_DELETE_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_DELETEResponse" message="tns:IEV3Library_ValidateEmailAddress_DELETE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress" message="tns:IEV3Library_ValidateEmailAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddressResponse" message="tns:IEV3Library_ValidateEmailAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_GETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_GETXML" message="tns:IEV3Library_ValidateEmailFull_GETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_GETXMLResponse" message="tns:IEV3Library_ValidateEmailFull_GETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_QUERYGETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_QUERYGETXML" message="tns:IEV3Library_ValidateEmailFull_QUERYGETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_QUERYGETXMLResponse" message="tns:IEV3Library_ValidateEmailFull_QUERYGETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_GETJSON">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_GETJSON" message="tns:IEV3Library_ValidateEmailFull_GETJSON_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_GETJSONResponse" message="tns:IEV3Library_ValidateEmailFull_GETJSON_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_POST">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_POST" message="tns:IEV3Library_ValidateEmailFull_POST_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_POSTResponse" message="tns:IEV3Library_ValidateEmailFull_POST_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_PUT">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_PUT" message="tns:IEV3Library_ValidateEmailFull_PUT_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_PUTResponse" message="tns:IEV3Library_ValidateEmailFull_PUT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_DELETE">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_DELETE" message="tns:IEV3Library_ValidateEmailFull_DELETE_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_DELETEResponse" message="tns:IEV3Library_ValidateEmailFull_DELETE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull" message="tns:IEV3Library_ValidateEmailFull_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullResponse" message="tns:IEV3Library_ValidateEmailFull_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_GETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_GETXML" message="tns:IEV3Library_ValidateEmailFast_GETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_GETXMLResponse" message="tns:IEV3Library_ValidateEmailFast_GETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_QUERYGETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_QUERYGETXML" message="tns:IEV3Library_ValidateEmailFast_QUERYGETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_QUERYGETXMLResponse" message="tns:IEV3Library_ValidateEmailFast_QUERYGETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_GETJSON">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_GETJSON" message="tns:IEV3Library_ValidateEmailFast_GETJSON_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_GETJSONResponse" message="tns:IEV3Library_ValidateEmailFast_GETJSON_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_POST">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_POST" message="tns:IEV3Library_ValidateEmailFast_POST_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_POSTResponse" message="tns:IEV3Library_ValidateEmailFast_POST_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_PUT">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_PUT" message="tns:IEV3Library_ValidateEmailFast_PUT_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_PUTResponse" message="tns:IEV3Library_ValidateEmailFast_PUT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_DELETE">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_DELETE" message="tns:IEV3Library_ValidateEmailFast_DELETE_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_DELETEResponse" message="tns:IEV3Library_ValidateEmailFast_DELETE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast" message="tns:IEV3Library_ValidateEmailFast_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastResponse" message="tns:IEV3Library_ValidateEmailFast_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_GETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_GETXML" message="tns:IEV3Library_ValidateEmailFullNoCorrections_GETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_GETXMLResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_GETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_QUERYGETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_QUERYGETXML" message="tns:IEV3Library_ValidateEmailFullNoCorrections_QUERYGETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_QUERYGETXMLResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_QUERYGETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_GETJSON">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_GETJSON" message="tns:IEV3Library_ValidateEmailFullNoCorrections_GETJSON_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_GETJSONResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_GETJSON_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_POST">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_POST" message="tns:IEV3Library_ValidateEmailFullNoCorrections_POST_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_POSTResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_POST_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_PUT">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_PUT" message="tns:IEV3Library_ValidateEmailFullNoCorrections_PUT_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_PUTResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_PUT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_DELETE">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_DELETE" message="tns:IEV3Library_ValidateEmailFullNoCorrections_DELETE_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_DELETEResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_DELETE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections" message="tns:IEV3Library_ValidateEmailFullNoCorrections_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrectionsResponse" message="tns:IEV3Library_ValidateEmailFullNoCorrections_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_GETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_GETXML" message="tns:IEV3Library_ValidateEmailFastNoCorrections_GETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_GETXMLResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_GETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_QUERYGETXML">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_QUERYGETXML" message="tns:IEV3Library_ValidateEmailFastNoCorrections_QUERYGETXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_QUERYGETXMLResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_QUERYGETXML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_GETJSON">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_GETJSON" message="tns:IEV3Library_ValidateEmailFastNoCorrections_GETJSON_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_GETJSONResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_GETJSON_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_POST">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_POST" message="tns:IEV3Library_ValidateEmailFastNoCorrections_POST_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_POSTResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_POST_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_PUT">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_PUT" message="tns:IEV3Library_ValidateEmailFastNoCorrections_PUT_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_PUTResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_PUT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_DELETE">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_DELETE" message="tns:IEV3Library_ValidateEmailFastNoCorrections_DELETE_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_DELETEResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_DELETE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections">
+      <wsdl:input wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections" message="tns:IEV3Library_ValidateEmailFastNoCorrections_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrectionsResponse" message="tns:IEV3Library_ValidateEmailFastNoCorrections_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DOTSEmailValidation3" type="tns:IEV3Library">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateEmailAddress_GETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_GETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_QUERYGETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_QUERYGETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_GETJSON">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_GETJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_POST">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_POST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_PUT">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_PUT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress_DELETE">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress_DELETE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailAddress">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_GETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_GETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_QUERYGETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_QUERYGETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_GETJSON">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_GETJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_POST">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_POST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_PUT">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_PUT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull_DELETE">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull_DELETE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFull">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_GETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_GETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_QUERYGETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_QUERYGETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_GETJSON">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_GETJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_POST">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_POST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_PUT">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_PUT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast_DELETE">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast_DELETE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFast">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_GETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_GETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_QUERYGETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_QUERYGETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_GETJSON">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_GETJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_POST">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_POST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_PUT">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_PUT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections_DELETE">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections_DELETE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFullNoCorrections">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFullNoCorrections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_GETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_GETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_QUERYGETXML">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_QUERYGETXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_GETJSON">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_GETJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_POST">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_POST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_PUT">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_PUT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections_DELETE">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections_DELETE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEmailFastNoCorrections">
+      <soap:operation soapAction="http://www.serviceobjects.com/IEV3Library/ValidateEmailFastNoCorrections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EV3Library">
+    <wsdl:port name="DOTSEmailValidation3" binding="tns:DOTSEmailValidation3">
+      <soap:address location="http://trial.serviceobjects.com/ev3/api.svc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
