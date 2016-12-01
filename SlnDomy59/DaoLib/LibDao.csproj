@@ -7,7 +7,7 @@
     <ProjectGuid>{F6C1CAF2-1B93-4EC5-BC0F-6905BA0B3710}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DaoLib</RootNamespace>
+    <RootNamespace>LibDao</RootNamespace>
     <AssemblyName>DaoLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClMetier\CiviliteManager.cs" />
     <Compile Include="ClMetier\ClientManager.cs" />
     <Compile Include="ClMetier\EmployeManager.cs" />
     <Compile Include="Connexion\ConnexionSqlServer.cs" />
+    <Compile Include="Entites\Civilite.cs" />
     <Compile Include="Entites\Client.cs" />
     <Compile Include="Entites\Employe.cs" />
+    <Compile Include="Entites\EtatClient.cs" />
     <Compile Include="Entites\Intervention.cs" />
     <Compile Include="Entites\Materiel.cs" />
     <Compile Include="Entites\Notification.cs" />

@@ -4,19 +4,42 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using LibDao;
 using System.IO;
+using LibDao.Entites;
 
 namespace Dispatcher
 {
     public partial class ModifierSupprimerClientForm : Form
     {
         private List<Client> listClient = null;
+        List<Civilite> listCivilites = null;
+        List<EtatClient> listEtatClient = null;
         Client clientSelectionne = null;
         Utils utils = null;
         public ModifierSupprimerClientForm()
         {
             InitializeComponent();
             utils = new Utils();
+            // Remplissage des combobox civilité et etat client
+            using (ClientManager clientManager = new ClientManager())
+            {
+                using (CiviliteManager civiliteManager = new CiviliteManager(clientManager.getConnexion()))
+                {
+                    listCivilites = civiliteManager.getListeCivilite();
+                    listEtatClient = clientManager.getListeEtatClient();
+                }
+            }
+
+            cbxCivilite.DisplayMember = "Abreviation";
+            // remplissage de la collection du combobox avec la list civilité
+            cbxCivilite.DataSource = listCivilites;
+            // sélection par défaut du deuxième élément de la combobox
+            cbxCivilite.SelectedIndex = 1;
+            // remplissage de la collection du combobox avec la list etatClient
+            cbxEtatClient.DisplayMember = "Etat"; // on affiche le champ etat
+            cbxEtatClient.DataSource = listEtatClient;
+
             this.dgvClient.Columns["ColCivilité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             if (InitialiserDGV())
             {
                 btnModifierClient.Enabled = true;
@@ -27,7 +50,7 @@ namespace Dispatcher
                 else
                 {
                     btnSupprimerClient.Enabled = false;
-                } 
+                }
             }
         }
         //**************************************************************************************************
@@ -37,30 +60,36 @@ namespace Dispatcher
             bool bRequete = false; // vrai si des clients ont été récupérés
             try
             {
-                using (ClientManager clientManager = new ClientManager())
+                List<Civilite> listCivilites = new List<Civilite>();
+                using (CiviliteManager civiliteManager = new CiviliteManager())
                 {
-                    // créer un liste de clients et récupère les clients de la BDD
-                    listClient = clientManager.listeClient();
-                }
-                foreach (Client chaqueClient in listClient)
-                {
-                    dgvClient.Rows.Add(
-                        chaqueClient.IdClient,
-                        chaqueClient.Entreprise,
-                        chaqueClient.Civilite,
-                        chaqueClient.Prenom,
-                        chaqueClient.Nom);
-                }
+                    listCivilites = civiliteManager.getListeCivilite();
+                    using (ClientManager clientManager = new ClientManager(civiliteManager.getConnexion()))
+                    {
+                        // créer un liste de clients et récupère les clients de la BDD
+                        listClient = clientManager.getListeClient();
+                    }
 
-                // Trie par ordre alphabétique des noms
-                dgvClient.Sort(dgvClient.Columns[4], ListSortDirection.Ascending);
-                bRequete = true;
+                    foreach (Client chaqueClient in listClient)
+                    {
+                        dgvClient.Rows.Add(
+                            chaqueClient.IdClient,
+                            chaqueClient.Entreprise,
+                            // Il faut retrouver l'abréviation correspondante dans la liste des civilités
+                            (listCivilites.Find(uneCivilite => uneCivilite.IdCivilite == chaqueClient.FkIdCivilite)).Abreviation,
+                            chaqueClient.Prenom,
+                            chaqueClient.Nom);
+                    }
+
+                    // Tri par ordre alphabétique des noms
+                    dgvClient.Sort(dgvClient.Columns[4], ListSortDirection.Ascending);
+                    bRequete = true;
+                }
             }
             catch
             {
-               
+
             }
-           
             return bRequete;
         }
         //**************************************************************************************************
@@ -98,7 +127,10 @@ namespace Dispatcher
                     using (ClientManager clientManager = new ClientManager()) // appel automatique de la methode dispose qui ferme la connexion
                     {
                         clientSelectionne.Entreprise = txtBoxNomEntreprise.Text.Trim();
-                        clientSelectionne.Civilite = rdBtnMr.Checked ? "Mr" : "Mme";
+                        // récupération de la civilité du client via le comboBox civilité
+                        Civilite laCiviliteSelectionnée = (Civilite)cbxCivilite.SelectedItem;
+                        clientSelectionne.FkIdCivilite = laCiviliteSelectionnée.IdCivilite;
+
                         clientSelectionne.Prenom = txtBoxPrenomClient.Text.Trim();
                         clientSelectionne.Nom = txtBoxNomClient.Text.Trim();
                         clientSelectionne.Adresse = txtBoxAdresse.Text.Trim();
@@ -109,11 +141,11 @@ namespace Dispatcher
                         // Test validation Email
                         String reponseWsValidEmail = "";
                         String email = txtBoxEmail.Text.Trim();
-                        if (email != string.Empty)
-                        {
-                            ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
-                            MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
-                        }
+                        //if (email != string.Empty)
+                        //{
+                        //    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
+                        //    MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
+                        //}
                         clientSelectionne.Email = email;
                         clientSelectionne.Latitude = mTxtBoxLatitude.Text;
                         clientSelectionne.Latitude = clientSelectionne.Latitude.Replace(",", ".");
@@ -121,16 +153,22 @@ namespace Dispatcher
                         clientSelectionne.Longitude = clientSelectionne.Longitude.Replace(",", ".");
                         // récupération image
                         if (pictureBoxImageClient.Image == null)
-                            clientSelectionne.Photoent = new Byte[0];  // null
+                        { clientSelectionne.Photoent = new Byte[0]; }  // null
                         else
-                            clientSelectionne.Photoent = utils.imageToByteArray(pictureBoxImageClient.Image);
-                        clientSelectionne.EtatClient = comboBoxEtatClient.SelectedItem.ToString();
-                        clientSelectionne.FkLoginE = UtilisateurConnecte.Login;
+                        { clientSelectionne.Photoent = utils.imageToByteArray(pictureBoxImageClient.Image); }
+
+                        EtatClient etatClientSelectionné = (EtatClient)cbxEtatClient.SelectedItem;
+                        clientSelectionne.FkIdEtatClient = etatClientSelectionné.IdEtatClient;
+                        
+                        // TODO
+                        //clientSelectionne.FkLoginE = UtilisateurConnecte.Login;
+                        clientSelectionne.FkLoginE = "phenri";
+
                         // On persiste les modifications
-                        clientManager.insUpdateClient(clientSelectionne);                        
+                        clientManager.insUpdateClient(clientSelectionne);
                         rafraichirIHM();
                         MessageBox.Show("Les modifications sont enregistrées");
-                    } 
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -152,7 +190,7 @@ namespace Dispatcher
                         rafraichirIHM();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -190,7 +228,7 @@ namespace Dispatcher
             if (IdxLigneActuelle >= 0)
             {
                 int idClient = (int)dgvClient.Rows[IdxLigneActuelle].Cells[0].Value;
-                int indiceDansListClient = listClient.FindIndex(s => s.IdClient == idClient);
+                int indiceDansListClient = listClient.FindIndex(leClientCherché => leClientCherché.IdClient == idClient);
                 clientSelectionne = listClient[indiceDansListClient];
                 // recupère les données du client
                 txtBoxNomEntreprise.Text = clientSelectionne.Entreprise;
@@ -205,15 +243,10 @@ namespace Dispatcher
 
                 mTxtBoxLatitude.Text = clientSelectionne.Latitude;
                 mTxtBoxLongitude.Text = utils.formatageLongitude(clientSelectionne.Longitude, '.');
-
-                String civilite = dgvClient.Rows[IdxLigneActuelle].Cells[2].Value.ToString();
-                if (civilite == "Mr")
-                { rdBtnMr.Checked = true; }
-                else
-                {
-                    rdBtnMme.Checked = true;
-                }
-
+                // modification de la valeur de l'item sélectionné dans le combobox
+                Civilite elementCivilite = listCivilites.Find(uneCivilite => uneCivilite.IdCivilite == clientSelectionne.FkIdCivilite);
+                cbxCivilite.SelectedItem = elementCivilite;
+                // Affichage de l'image liée au client
                 Byte[] image = clientSelectionne.Photoent;
                 if (image == null || image.Length == 0)
                 {
@@ -224,8 +257,10 @@ namespace Dispatcher
                     pictureBoxImageClient.Image = utils.byteArrayToImage(image);
                 }
 
-                comboBoxEtatClient.SelectedItem = clientSelectionne.EtatClient;
-
+                // modification de la valeur de l'item sélectionné dans le combobox etat client
+                EtatClient elementEtatClient = listEtatClient.Find(unEtatClient => unEtatClient.IdEtatClient == clientSelectionne.FkIdEtatClient);
+                cbxEtatClient.SelectedItem = elementEtatClient;
+                // Affichage de la date de création du client
                 lblDateEnregistrementClient.Text = clientSelectionne.DateCreation.ToString("dd/MM/yyyy");
             }
         }

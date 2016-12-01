@@ -53,8 +53,6 @@
             this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNomEntreprise = new System.Windows.Forms.Label();
             this.txtBoxNomEntreprise = new System.Windows.Forms.TextBox();
-            this.rdBtnMme = new System.Windows.Forms.RadioButton();
-            this.rdBtnMr = new System.Windows.Forms.RadioButton();
             this.lblAdresse = new System.Windows.Forms.Label();
             this.lblCodePostal = new System.Windows.Forms.Label();
             this.mTxtBoxCodePostal = new System.Windows.Forms.MaskedTextBox();
@@ -66,10 +64,11 @@
             this.lblLongitude = new System.Windows.Forms.Label();
             this.mTxtBoxLatitude = new System.Windows.Forms.MaskedTextBox();
             this.mTxtBoxLongitude = new System.Windows.Forms.MaskedTextBox();
-            this.comboBoxEtatClient = new System.Windows.Forms.ComboBox();
+            this.cbxEtatClient = new System.Windows.Forms.ComboBox();
             this.lblEtatClient = new System.Windows.Forms.Label();
             this.lblClientEnregistreDepuis = new System.Windows.Forms.Label();
             this.lblDateEnregistrementClient = new System.Windows.Forms.Label();
+            this.cbxCivilite = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImageClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
             this.SuspendLayout();
@@ -312,26 +311,6 @@
             this.txtBoxNomEntreprise.Size = new System.Drawing.Size(282, 20);
             this.txtBoxNomEntreprise.TabIndex = 10;
             // 
-            // rdBtnMme
-            // 
-            this.rdBtnMme.AutoSize = true;
-            this.rdBtnMme.Location = new System.Drawing.Point(12, 278);
-            this.rdBtnMme.Name = "rdBtnMme";
-            this.rdBtnMme.Size = new System.Drawing.Size(48, 17);
-            this.rdBtnMme.TabIndex = 45;
-            this.rdBtnMme.Text = "Mme";
-            this.rdBtnMme.UseVisualStyleBackColor = true;
-            // 
-            // rdBtnMr
-            // 
-            this.rdBtnMr.AutoSize = true;
-            this.rdBtnMr.Location = new System.Drawing.Point(69, 279);
-            this.rdBtnMr.Name = "rdBtnMr";
-            this.rdBtnMr.Size = new System.Drawing.Size(37, 17);
-            this.rdBtnMr.TabIndex = 46;
-            this.rdBtnMr.Text = "Mr";
-            this.rdBtnMr.UseVisualStyleBackColor = true;
-            // 
             // lblAdresse
             // 
             this.lblAdresse.AutoSize = true;
@@ -437,18 +416,18 @@
             this.mTxtBoxLongitude.Size = new System.Drawing.Size(70, 20);
             this.mTxtBoxLongitude.TabIndex = 55;
             // 
-            // comboBoxEtatClient
+            // cbxEtatClient
             // 
-            this.comboBoxEtatClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEtatClient.FormattingEnabled = true;
-            this.comboBoxEtatClient.Items.AddRange(new object[] {
+            this.cbxEtatClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEtatClient.FormattingEnabled = true;
+            this.cbxEtatClient.Items.AddRange(new object[] {
             "valide",
             "impayé",
             "aSupprimer"});
-            this.comboBoxEtatClient.Location = new System.Drawing.Point(100, 191);
-            this.comboBoxEtatClient.Name = "comboBoxEtatClient";
-            this.comboBoxEtatClient.Size = new System.Drawing.Size(87, 21);
-            this.comboBoxEtatClient.TabIndex = 56;
+            this.cbxEtatClient.Location = new System.Drawing.Point(100, 191);
+            this.cbxEtatClient.Name = "cbxEtatClient";
+            this.cbxEtatClient.Size = new System.Drawing.Size(87, 21);
+            this.cbxEtatClient.TabIndex = 56;
             // 
             // lblEtatClient
             // 
@@ -477,15 +456,25 @@
             this.lblDateEnregistrementClient.TabIndex = 59;
             this.lblDateEnregistrementClient.Text = "label2";
             // 
+            // cbxCivilite
+            // 
+            this.cbxCivilite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCivilite.FormattingEnabled = true;
+            this.cbxCivilite.Location = new System.Drawing.Point(15, 278);
+            this.cbxCivilite.Name = "cbxCivilite";
+            this.cbxCivilite.Size = new System.Drawing.Size(62, 21);
+            this.cbxCivilite.TabIndex = 60;
+            // 
             // ModifierSupprimerClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 438);
+            this.ClientSize = new System.Drawing.Size(804, 437);
+            this.Controls.Add(this.cbxCivilite);
             this.Controls.Add(this.lblDateEnregistrementClient);
             this.Controls.Add(this.lblClientEnregistreDepuis);
             this.Controls.Add(this.lblEtatClient);
-            this.Controls.Add(this.comboBoxEtatClient);
+            this.Controls.Add(this.cbxEtatClient);
             this.Controls.Add(this.mTxtBoxLongitude);
             this.Controls.Add(this.mTxtBoxLatitude);
             this.Controls.Add(this.lblLongitude);
@@ -496,8 +485,6 @@
             this.Controls.Add(this.lblTelephone);
             this.Controls.Add(this.mTxtBoxCodePostal);
             this.Controls.Add(this.lblCodePostal);
-            this.Controls.Add(this.rdBtnMr);
-            this.Controls.Add(this.rdBtnMme);
             this.Controls.Add(this.txtBoxNomEntreprise);
             this.Controls.Add(this.lblNomEntreprise);
             this.Controls.Add(this.dgvClient);
@@ -556,8 +543,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNom;
         private System.Windows.Forms.Label lblNomEntreprise;
         private System.Windows.Forms.TextBox txtBoxNomEntreprise;
-        private System.Windows.Forms.RadioButton rdBtnMme;
-        private System.Windows.Forms.RadioButton rdBtnMr;
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.Label lblCodePostal;
         private System.Windows.Forms.MaskedTextBox mTxtBoxCodePostal;
@@ -569,9 +554,10 @@
         private System.Windows.Forms.Label lblLongitude;
         private System.Windows.Forms.MaskedTextBox mTxtBoxLatitude;
         private System.Windows.Forms.MaskedTextBox mTxtBoxLongitude;
-        private System.Windows.Forms.ComboBox comboBoxEtatClient;
+        private System.Windows.Forms.ComboBox cbxEtatClient;
         private System.Windows.Forms.Label lblEtatClient;
         private System.Windows.Forms.Label lblClientEnregistreDepuis;
         private System.Windows.Forms.Label lblDateEnregistrementClient;
+        private System.Windows.Forms.ComboBox cbxCivilite;
     }
 }

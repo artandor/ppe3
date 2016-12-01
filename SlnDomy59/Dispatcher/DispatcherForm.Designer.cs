@@ -93,50 +93,44 @@
             this.supprimerToolStripMenuItemIntervention,
             this.modifierToolStripMenuItem,
             this.aperçuToolStripMenuItem});
-            this.toolStripMenuItemIntervention.Enabled = false;
             this.toolStripMenuItemIntervention.Name = "toolStripMenuItemIntervention";
             this.toolStripMenuItemIntervention.Size = new System.Drawing.Size(134, 20);
             this.toolStripMenuItemIntervention.Text = "Gestion  interventions";
             // 
             // ajouterToolStripMenuItemIntervention
             // 
-            this.ajouterToolStripMenuItemIntervention.Enabled = false;
             this.ajouterToolStripMenuItemIntervention.Name = "ajouterToolStripMenuItemIntervention";
-            this.ajouterToolStripMenuItemIntervention.Size = new System.Drawing.Size(129, 22);
+            this.ajouterToolStripMenuItemIntervention.Size = new System.Drawing.Size(152, 22);
             this.ajouterToolStripMenuItemIntervention.Text = "Ajouter";
-         
+            this.ajouterToolStripMenuItemIntervention.Click += new System.EventHandler(this.ajouterToolStripMenuItemIntervention_Click);
             // 
             // supprimerToolStripMenuItemIntervention
             // 
-            this.supprimerToolStripMenuItemIntervention.Enabled = false;
             this.supprimerToolStripMenuItemIntervention.Name = "supprimerToolStripMenuItemIntervention";
-            this.supprimerToolStripMenuItemIntervention.Size = new System.Drawing.Size(129, 22);
+            this.supprimerToolStripMenuItemIntervention.Size = new System.Drawing.Size(152, 22);
             this.supprimerToolStripMenuItemIntervention.Text = "Supprimer";
-           
+            this.supprimerToolStripMenuItemIntervention.Click += new System.EventHandler(this.supprimerToolStripMenuItemIntervention_Click);
             // 
             // modifierToolStripMenuItem
             // 
-            this.modifierToolStripMenuItem.Enabled = false;
             this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
-            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modifierToolStripMenuItem.Text = "Modifier";
-           
+            this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
             // 
             // aperçuToolStripMenuItem
             // 
             this.aperçuToolStripMenuItem.Enabled = false;
             this.aperçuToolStripMenuItem.Name = "aperçuToolStripMenuItem";
-            this.aperçuToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.aperçuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aperçuToolStripMenuItem.Text = "Aperçu";
-           
             // 
             // envoiSMSToolStripMenuItem
             // 
-            this.envoiSMSToolStripMenuItem.Enabled = false;
             this.envoiSMSToolStripMenuItem.Name = "envoiSMSToolStripMenuItem";
             this.envoiSMSToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.envoiSMSToolStripMenuItem.Text = "Envoi SMS";
-          
+            this.envoiSMSToolStripMenuItem.Click += new System.EventHandler(this.envoiSMSToolStripMenuItem_Click);
             // 
             // gestionMatérielToolStripMenuItem
             // 
@@ -144,7 +138,6 @@
             this.ajouterMaterielToolStripMenuItem,
             this.modifierMatérielToolStripMenuItem,
             this.affecterMaterielAUnTechnicienToolStripMenuItem});
-            this.gestionMatérielToolStripMenuItem.Enabled = false;
             this.gestionMatérielToolStripMenuItem.Name = "gestionMatérielToolStripMenuItem";
             this.gestionMatérielToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
             this.gestionMatérielToolStripMenuItem.Text = "Gestion Matériel";
@@ -154,28 +147,27 @@
             this.ajouterMaterielToolStripMenuItem.Name = "ajouterMaterielToolStripMenuItem";
             this.ajouterMaterielToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.ajouterMaterielToolStripMenuItem.Text = "Ajouter";
-           
+            this.ajouterMaterielToolStripMenuItem.Click += new System.EventHandler(this.ajouterMaterielToolStripMenuItem_Click);
             // 
             // modifierMatérielToolStripMenuItem
             // 
             this.modifierMatérielToolStripMenuItem.Name = "modifierMatérielToolStripMenuItem";
             this.modifierMatérielToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.modifierMatérielToolStripMenuItem.Text = "Modifier";
-           
+            this.modifierMatérielToolStripMenuItem.Click += new System.EventHandler(this.modifierMatérielToolStripMenuItem_Click);
             // 
             // affecterMaterielAUnTechnicienToolStripMenuItem
             // 
             this.affecterMaterielAUnTechnicienToolStripMenuItem.Name = "affecterMaterielAUnTechnicienToolStripMenuItem";
             this.affecterMaterielAUnTechnicienToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.affecterMaterielAUnTechnicienToolStripMenuItem.Text = "Affecter matériel";
-           
+            this.affecterMaterielAUnTechnicienToolStripMenuItem.Click += new System.EventHandler(this.affecterMaterielAUnTechnicienToolStripMenuItem_Click);
             // 
             // TechnicienToolStripMenuItem
             // 
             this.TechnicienToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mAjoutTechnicienToolStripMenuItem,
             this.modifierTechnicienToolStripMenuItem});
-            this.TechnicienToolStripMenuItem.Enabled = false;
             this.TechnicienToolStripMenuItem.Name = "TechnicienToolStripMenuItem";
             this.TechnicienToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.TechnicienToolStripMenuItem.Text = "Gestion techniciens";
@@ -185,14 +177,14 @@
             this.mAjoutTechnicienToolStripMenuItem.Name = "mAjoutTechnicienToolStripMenuItem";
             this.mAjoutTechnicienToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.mAjoutTechnicienToolStripMenuItem.Text = "Ajouter technicien";
-           
+            this.mAjoutTechnicienToolStripMenuItem.Click += new System.EventHandler(this.mAjoutTechnicienToolStripMenuItem_Click);
             // 
             // modifierTechnicienToolStripMenuItem
             // 
             this.modifierTechnicienToolStripMenuItem.Name = "modifierTechnicienToolStripMenuItem";
             this.modifierTechnicienToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.modifierTechnicienToolStripMenuItem.Text = "Modifier";
-           
+            this.modifierTechnicienToolStripMenuItem.Click += new System.EventHandler(this.modifierTechnicienToolStripMenuItem_Click);
             // 
             // DispatcherForm
             // 

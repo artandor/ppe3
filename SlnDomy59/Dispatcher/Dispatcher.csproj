@@ -74,6 +74,60 @@
     <Compile Include="DispatcherForm.Designer.cs">
       <DependentUpon>DispatcherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Materiel\AjouterMaterielForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materiel\AjouterMaterielForm.Designer.cs">
+      <DependentUpon>AjouterMaterielForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materiel\AffecterMaterielForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materiel\AffecterMaterielForm.Designer.cs">
+      <DependentUpon>AffecterMaterielForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materiel\ModifierSupprimerMaterielForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materiel\ModifierSupprimerMaterielForm.Designer.cs">
+      <DependentUpon>ModifierSupprimerMaterielForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planning\AjouterInterventionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planning\AjouterInterventionForm.Designer.cs">
+      <DependentUpon>AjouterInterventionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planning\ModifierInterventionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planning\ModifierInterventionForm.Designer.cs">
+      <DependentUpon>ModifierInterventionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planning\SupprimerInterventionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planning\SupprimerInterventionForm.Designer.cs">
+      <DependentUpon>SupprimerInterventionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sms\EnvoiSMSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sms\EnvoiSMSForm.Designer.cs">
+      <DependentUpon>EnvoiSMSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Technicien\AjouterTechnicienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Technicien\AjouterTechnicienForm.Designer.cs">
+      <DependentUpon>AjouterTechnicienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Technicien\ModifierSupprimerTechnicienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Technicien\ModifierSupprimerTechnicienForm.Designer.cs">
+      <DependentUpon>ModifierSupprimerTechnicienForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\EmployeConnecte.cs" />
     <Compile Include="Utils\InfoActiveDirectory.cs" />
     <Compile Include="Utils\Utils.cs" />
@@ -85,7 +139,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\SelectItem.cs" />
     <Compile Include="Utils\ValidEmail.cs" />
     <Compile Include="Web References\refValidEmail\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +209,7 @@
       <CachedSettingsPropName>Dispatcher_refValidEmail_EV3Library</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

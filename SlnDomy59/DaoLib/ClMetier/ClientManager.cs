@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Data.Sql;
+using LibDao.Entites;
 
 namespace LibDao
 {
@@ -32,7 +33,43 @@ namespace LibDao
             return connexionSqlServer;
         }
         //*****************************************************************************************************************
+        public List<EtatClient> getListeEtatClient()
+        { 
+            List<EtatClient> listEtatClient = new List<EtatClient>();
 
+            // Initialisation de la commande associée à la connexion en cours
+            // pour une commande "select * " on utilise pas de procédure stockée
+            SqlCommand sqlCmd = new SqlCommand("select * from etatClient", sqlConnexion);
+
+            try
+            {
+                // Ouverture de la connexion
+                if (sqlConnexion.State != ConnectionState.Open)
+                {
+                    sqlConnexion.Open();
+                }
+                SqlDataReader dataReader = sqlCmd.ExecuteReader();
+                // Lecture de tous les enregistrements contenus dans le DataRead
+                while (dataReader.Read())
+                {
+                    // On rempli chque attribut de l'objet etatClient
+                    listEtatClient.Add(new EtatClient()
+                    {
+                        IdEtatClient = (int)dataReader["idEtatClient"],
+                        Etat = (String)dataReader["etat"]
+                    });
+                }
+                dataReader.Close();
+            }
+            catch (Exception ex)
+            {
+                Dispose();
+                throw new Exception("Erreur lors de la récupération liste des etats client");
+            }
+            return listEtatClient;
+        }
+
+        //*****************************************************************************************************************
         public Client getClient(Client prmClient)
         {
             Client client = new Client();
@@ -61,7 +98,7 @@ namespace LibDao
                 {
                     client.IdClient = (int)dataReader["IdClient"];
                     client.Entreprise = (String)dataReader["entreprise"];
-                    client.Civilite = (String)dataReader["civilite"];
+                    client.FkIdCivilite = (int)dataReader["fkIdCivilite"];
                     client.Prenom = (String)dataReader["prenom"];
                     client.Nom = (String)dataReader["nom"];
                     client.Adresse = (String)dataReader["adresse"];
@@ -75,7 +112,7 @@ namespace LibDao
                     client.Longitude = (String)dataReader["longitude"].ToString();
                     client.DateCreation = (DateTime)dataReader["dateCreation"];
                     client.DateModification = (dataReader["dateModification"] == DBNull.Value ? new DateTime(0) : (DateTime)(dataReader["dateModification"]));
-                    client.EtatClient = (String)dataReader["etatClient"];
+                    client.FkIdEtatClient = (int)dataReader["fkIdEtatClient"];
                     client.FkLoginE = (String)dataReader["fkLoginE"];
                 }
                 dataReader.Close();
@@ -105,7 +142,7 @@ namespace LibDao
             // paramètres passés à la procédure stockée
             sqlCmd.Parameters.Add("@pIdClient", SqlDbType.Int).Value = prmClient.IdClient;
             sqlCmd.Parameters.Add("@pEntreprise", SqlDbType.NVarChar, 75).Value = prmClient.Entreprise;
-            sqlCmd.Parameters.Add("@pCivilite", SqlDbType.NVarChar, 3).Value = prmClient.Civilite;
+            sqlCmd.Parameters.Add("@pFkIdCivilite", SqlDbType.Int).Value = prmClient.FkIdCivilite;
             sqlCmd.Parameters.Add("@pPrenom", SqlDbType.NVarChar, 20).Value = prmClient.Prenom;
             sqlCmd.Parameters.Add("@pNom", SqlDbType.NVarChar, 30).Value = prmClient.Nom;
             sqlCmd.Parameters.Add("@pAdresse", SqlDbType.NVarChar, 75).Value = prmClient.Adresse;
@@ -117,7 +154,7 @@ namespace LibDao
             sqlCmd.Parameters.Add("@pPhotoent", SqlDbType.VarBinary).Value = prmClient.Photoent;
             sqlCmd.Parameters.Add("@pLatitude", SqlDbType.NVarChar, 20).Value = prmClient.Latitude;
             sqlCmd.Parameters.Add("@pLongitude", SqlDbType.NVarChar, 20).Value = prmClient.Longitude;
-            sqlCmd.Parameters.Add("@pEtatClient", SqlDbType.NVarChar, 15).Value = prmClient.EtatClient;
+            sqlCmd.Parameters.Add("@pFkIdEtatClient", SqlDbType.Int).Value = prmClient.FkIdEtatClient;
             sqlCmd.Parameters.Add("@pLoginE", SqlDbType.NVarChar, 25).Value = prmClient.FkLoginE;
 
             // On persiste les data
@@ -137,7 +174,7 @@ namespace LibDao
             catch (Exception ex)
             {
                 Dispose();
-                throw new Exception("Erreur lors de l'ajout ou modification client d'un Client");
+                throw new Exception("Erreur lors de l'ajout ou modification client");
             }
             return retour;
         }
@@ -188,7 +225,7 @@ namespace LibDao
 
         //*****************************************************************************************************************
       
-        public List<Client> listeClient()
+        public List<Client> getListeClient()
         {
             // pour une commande "select * " on utilise pas de procédure stockée
             List<Client> listClients = new List<Client>();
@@ -212,7 +249,7 @@ namespace LibDao
                     {
                     IdClient = (int)dataReader["idClient"],
                     Entreprise= (String)dataReader["entreprise"],
-                    Civilite = (String)dataReader["civilite"],
+                    FkIdCivilite = (int)dataReader["fkIdCivilite"],
                     Prenom = (String)dataReader["prenom"],
                     Nom = (String)dataReader["nom"],
                     Adresse = (String)dataReader["adresse"],
@@ -226,7 +263,7 @@ namespace LibDao
                     Longitude = (String)dataReader["longitude"].ToString(),
                     DateCreation = (DateTime)dataReader["dateCreation"],
                     DateModification = (dataReader["dateModification"] == DBNull.Value ? new DateTime(0) : (DateTime)(dataReader["dateModification"])),
-                    EtatClient = (String)dataReader["etatClient"],
+                    FkIdEtatClient = (int)dataReader["fkIdEtatClient"],
                     FkLoginE = (String)dataReader["fkLoginE"]
                     });
                 }

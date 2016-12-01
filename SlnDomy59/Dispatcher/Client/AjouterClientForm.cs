@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using System.IO;
 using LibDao;
 
@@ -10,7 +11,18 @@ namespace Dispatcher
         public AjouterClientForm()
         {
             InitializeComponent();
-            comBoxCivilite.SelectedItem = "Mr";
+             List<Civilite> listCivilites = new List<Civilite>();
+             using (CiviliteManager civiliteManager = new CiviliteManager())
+             {
+                 listCivilites = civiliteManager.getListeCivilite();
+             }
+
+             comBoxCivilite.DisplayMember = "Abreviation";
+            // remplissage de la collection du combobox avec la list civilité
+             comBoxCivilite.DataSource = listCivilites;
+             // sélection par défaut du deuxième élément de la combobox
+             comBoxCivilite.SelectedIndex = 1;
+
         }
     //**************************************************************************************************
         private void btnViderChamps_Click(object sender, EventArgs e)
@@ -34,7 +46,10 @@ namespace Dispatcher
             using (ClientManager clientManager = new ClientManager()) // appel automatique de la methode dispose qui ferme la connexion
             {
                 client.Entreprise = txtBoxNomEntreprise.Text.Trim();
-                client.Civilite = comBoxCivilite.SelectedItem.ToString();
+
+                Civilite laCiviliteSelectionnée = (Civilite)comBoxCivilite.SelectedItem;
+                client.FkIdCivilite = laCiviliteSelectionnée.IdCivilite;
+
                 client.Prenom = txtBoxPrenomClient.Text.Trim() ;
                 client.Nom = txtBoxNomClient.Text.Trim();
                 client.Adresse = txtBoxAdresse.Text.Trim();
@@ -45,11 +60,14 @@ namespace Dispatcher
                 // Test validation Email
                 String reponseWsValidEmail = "";
                 String email = txtBoxEmail.Text.Trim();
-                if(email!=string.Empty)
-                {
-                    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
-                    MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
-                }
+
+                // TODO
+                //if(email!=string.Empty)
+                //{
+                //    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
+                //    MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
+                //}
+
                 client.Email = email;
                 Byte[] image;
                 // récupération de l'image chargée
@@ -71,16 +89,20 @@ namespace Dispatcher
                 {
                     client.Photoent = new Byte[0];  // Pas d'image du tout
                 }
-                client.EtatClient = "valide"; // Le client est valide à l'inscription
-                client.FkLoginE = UtilisateurConnecte.Login;
+                client.FkIdEtatClient = 1; // Le client est validé à l'inscription
+
+                //TODO
+                //client.FkLoginE = UtilisateurConnecte.Login;
+                client.FkLoginE = "phenri";
+
                 try
                 {
-                    if(clientManager.insUpdateClient(client))
+                    if (clientManager.insUpdateClient(client))
                     {
                         MessageBox.Show("Client ajouté avec succès");
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }               

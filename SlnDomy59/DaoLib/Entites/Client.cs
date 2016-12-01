@@ -21,11 +21,12 @@ namespace LibDao
             get { return entreprise; }
             set { entreprise = value; }
         }
-        private string civilite = "";
-        public string Civilite
+
+        private int fkIdCivilite = 0;
+        public int FkIdCivilite
         {
-            get { return civilite; }
-            set { civilite = value; }
+            get { return fkIdCivilite; }
+            set { fkIdCivilite = value; }
         }
 
         private string prenom = "";
@@ -122,12 +123,12 @@ namespace LibDao
             set { dateModification = value; }
         }
 
-        private string etatClient = "";
+        private int fkIdEtatClient = 0;
 
-        public string EtatClient
+        public int FkIdEtatClient
         {
-            get { return etatClient; }
-            set { etatClient = value; }
+            get { return fkIdEtatClient; }
+            set { fkIdEtatClient = value; }
         }
 
         private string fkLoginE = "";
