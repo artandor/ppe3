@@ -21,7 +21,7 @@ namespace Dispatcher
             // remplissage de la collection du combobox avec la list civilité
              comBoxCivilite.DataSource = listCivilites;
              // sélection par défaut du deuxième élément de la combobox
-             comBoxCivilite.SelectedIndex = 1;
+             comBoxCivilite.SelectedIndex = 0;
 
         }
     //**************************************************************************************************
@@ -90,6 +90,9 @@ namespace Dispatcher
                     client.Photoent = new Byte[0];  // Pas d'image du tout
                 }
                 client.FkIdEtatClient = 1; // Le client est validé à l'inscription
+
+                client.DateCreation = DateTime.Now;
+
 
                 //TODO
                 //client.FkLoginE = UtilisateurConnecte.Login;
