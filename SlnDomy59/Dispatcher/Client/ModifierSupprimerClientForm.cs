@@ -104,6 +104,7 @@ namespace Dispatcher
             pictureBoxImageClient.Image = null;
             dgvClient.Rows.Clear();
             mTxtBoxLatitude.ResetText(); mTxtBoxLongitude.ResetText();
+            lblDateEnregistrementClient.Text = "";
         }
         //**************************************************************************************************
         private void rafraichirIHM()
@@ -269,6 +270,7 @@ namespace Dispatcher
         // Un try catch permet d'éviter attrape une exception rarissime si la table client est vide (Row null)
         private void ModifierSupprimerClientForm_Load(object sender, EventArgs e)
         {
+            lblDateEnregistrementClient.Text = "";
             try
             {
                 dgvClient.Rows[0].Selected = false;

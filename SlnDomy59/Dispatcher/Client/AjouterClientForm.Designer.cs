@@ -56,9 +56,10 @@
             // 
             // btnViderChamps
             // 
-            this.btnViderChamps.Location = new System.Drawing.Point(363, 291);
+            this.btnViderChamps.Location = new System.Drawing.Point(484, 358);
+            this.btnViderChamps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViderChamps.Name = "btnViderChamps";
-            this.btnViderChamps.Size = new System.Drawing.Size(81, 52);
+            this.btnViderChamps.Size = new System.Drawing.Size(108, 64);
             this.btnViderChamps.TabIndex = 0;
             this.btnViderChamps.TabStop = false;
             this.btnViderChamps.Tag = "0";
@@ -68,9 +69,10 @@
             // 
             // btnAjouterClient
             // 
-            this.btnAjouterClient.Location = new System.Drawing.Point(459, 291);
+            this.btnAjouterClient.Location = new System.Drawing.Point(612, 358);
+            this.btnAjouterClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAjouterClient.Name = "btnAjouterClient";
-            this.btnAjouterClient.Size = new System.Drawing.Size(113, 52);
+            this.btnAjouterClient.Size = new System.Drawing.Size(151, 64);
             this.btnAjouterClient.TabIndex = 0;
             this.btnAjouterClient.TabStop = false;
             this.btnAjouterClient.Tag = "0";
@@ -82,9 +84,10 @@
             // 
             this.lblAdresseSuite.AutoSize = true;
             this.lblAdresseSuite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblAdresseSuite.Location = new System.Drawing.Point(8, 183);
+            this.lblAdresseSuite.Location = new System.Drawing.Point(11, 225);
+            this.lblAdresseSuite.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresseSuite.Name = "lblAdresseSuite";
-            this.lblAdresseSuite.Size = new System.Drawing.Size(98, 16);
+            this.lblAdresseSuite.Size = new System.Drawing.Size(124, 20);
             this.lblAdresseSuite.TabIndex = 27;
             this.lblAdresseSuite.Text = "Adresse (suite)";
             // 
@@ -92,9 +95,10 @@
             // 
             this.lblVille.AutoSize = true;
             this.lblVille.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblVille.Location = new System.Drawing.Point(8, 223);
+            this.lblVille.Location = new System.Drawing.Point(11, 274);
+            this.lblVille.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVille.Name = "lblVille";
-            this.lblVille.Size = new System.Drawing.Size(34, 16);
+            this.lblVille.Size = new System.Drawing.Size(41, 20);
             this.lblVille.TabIndex = 26;
             this.lblVille.Text = "Ville";
             // 
@@ -102,9 +106,10 @@
             // 
             this.lblAdresse.AutoSize = true;
             this.lblAdresse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblAdresse.Location = new System.Drawing.Point(8, 143);
+            this.lblAdresse.Location = new System.Drawing.Point(11, 176);
+            this.lblAdresse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresse.Name = "lblAdresse";
-            this.lblAdresse.Size = new System.Drawing.Size(68, 16);
+            this.lblAdresse.Size = new System.Drawing.Size(86, 20);
             this.lblAdresse.TabIndex = 25;
             this.lblAdresse.Text = "Adresse : ";
             // 
@@ -112,9 +117,10 @@
             // 
             this.lblNumeroTel.AutoSize = true;
             this.lblNumeroTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblNumeroTel.Location = new System.Drawing.Point(8, 303);
+            this.lblNumeroTel.Location = new System.Drawing.Point(11, 373);
+            this.lblNumeroTel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumeroTel.Name = "lblNumeroTel";
-            this.lblNumeroTel.Size = new System.Drawing.Size(74, 16);
+            this.lblNumeroTel.Size = new System.Drawing.Size(86, 20);
             this.lblNumeroTel.TabIndex = 24;
             this.lblNumeroTel.Text = "Téléphone";
             // 
@@ -122,9 +128,10 @@
             // 
             this.lblPrenom.AutoSize = true;
             this.lblPrenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblPrenom.Location = new System.Drawing.Point(8, 102);
+            this.lblPrenom.Location = new System.Drawing.Point(11, 126);
+            this.lblPrenom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(58, 16);
+            this.lblPrenom.Size = new System.Drawing.Size(72, 20);
             this.lblPrenom.TabIndex = 23;
             this.lblPrenom.Text = "Prenom ";
             // 
@@ -132,9 +139,10 @@
             // 
             this.lblNom.AutoSize = true;
             this.lblNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblNom.Location = new System.Drawing.Point(69, 63);
+            this.lblNom.Location = new System.Drawing.Point(92, 78);
+            this.lblNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(37, 16);
+            this.lblNom.Size = new System.Drawing.Size(44, 20);
             this.lblNom.TabIndex = 22;
             this.lblNom.Text = "Nom";
             // 
@@ -142,9 +150,10 @@
             // 
             this.pictureBoxImageClient.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBoxImageClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxImageClient.Location = new System.Drawing.Point(372, 12);
+            this.pictureBoxImageClient.Location = new System.Drawing.Point(496, 15);
+            this.pictureBoxImageClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxImageClient.Name = "pictureBoxImageClient";
-            this.pictureBoxImageClient.Size = new System.Drawing.Size(200, 200);
+            this.pictureBoxImageClient.Size = new System.Drawing.Size(265, 245);
             this.pictureBoxImageClient.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImageClient.TabIndex = 21;
             this.pictureBoxImageClient.TabStop = false;
@@ -152,49 +161,55 @@
             // 
             // txtBoxAdresseSuite
             // 
-            this.txtBoxAdresseSuite.Location = new System.Drawing.Point(117, 182);
+            this.txtBoxAdresseSuite.Location = new System.Drawing.Point(156, 224);
+            this.txtBoxAdresseSuite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxAdresseSuite.MaxLength = 128;
             this.txtBoxAdresseSuite.Name = "txtBoxAdresseSuite";
-            this.txtBoxAdresseSuite.Size = new System.Drawing.Size(205, 20);
+            this.txtBoxAdresseSuite.Size = new System.Drawing.Size(272, 22);
             this.txtBoxAdresseSuite.TabIndex = 30;
             // 
             // txtBoxVille
             // 
-            this.txtBoxVille.Location = new System.Drawing.Point(117, 222);
+            this.txtBoxVille.Location = new System.Drawing.Point(156, 273);
+            this.txtBoxVille.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxVille.MaxLength = 128;
             this.txtBoxVille.Name = "txtBoxVille";
-            this.txtBoxVille.Size = new System.Drawing.Size(210, 20);
+            this.txtBoxVille.Size = new System.Drawing.Size(279, 22);
             this.txtBoxVille.TabIndex = 35;
             // 
             // txtBoxAdresse
             // 
-            this.txtBoxAdresse.Location = new System.Drawing.Point(117, 142);
+            this.txtBoxAdresse.Location = new System.Drawing.Point(156, 175);
+            this.txtBoxAdresse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxAdresse.MaxLength = 128;
             this.txtBoxAdresse.Name = "txtBoxAdresse";
-            this.txtBoxAdresse.Size = new System.Drawing.Size(210, 20);
+            this.txtBoxAdresse.Size = new System.Drawing.Size(279, 22);
             this.txtBoxAdresse.TabIndex = 25;
             // 
             // txtBoxPrenomClient
             // 
-            this.txtBoxPrenomClient.Location = new System.Drawing.Point(117, 102);
+            this.txtBoxPrenomClient.Location = new System.Drawing.Point(156, 126);
+            this.txtBoxPrenomClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxPrenomClient.MaxLength = 50;
             this.txtBoxPrenomClient.Name = "txtBoxPrenomClient";
-            this.txtBoxPrenomClient.Size = new System.Drawing.Size(210, 20);
+            this.txtBoxPrenomClient.Size = new System.Drawing.Size(279, 22);
             this.txtBoxPrenomClient.TabIndex = 20;
             // 
             // txtBoxNomClient
             // 
-            this.txtBoxNomClient.Location = new System.Drawing.Point(117, 62);
+            this.txtBoxNomClient.Location = new System.Drawing.Point(156, 76);
+            this.txtBoxNomClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxNomClient.MaxLength = 50;
             this.txtBoxNomClient.Name = "txtBoxNomClient";
-            this.txtBoxNomClient.Size = new System.Drawing.Size(210, 20);
+            this.txtBoxNomClient.Size = new System.Drawing.Size(279, 22);
             this.txtBoxNomClient.TabIndex = 15;
             // 
             // btnModifierImage
             // 
-            this.btnModifierImage.Location = new System.Drawing.Point(430, 237);
+            this.btnModifierImage.Location = new System.Drawing.Point(573, 292);
+            this.btnModifierImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModifierImage.Name = "btnModifierImage";
-            this.btnModifierImage.Size = new System.Drawing.Size(113, 23);
+            this.btnModifierImage.Size = new System.Drawing.Size(151, 28);
             this.btnModifierImage.TabIndex = 0;
             this.btnModifierImage.TabStop = false;
             this.btnModifierImage.Tag = "0";
@@ -206,38 +221,42 @@
             // 
             this.lblNomEntreprise.AutoSize = true;
             this.lblNomEntreprise.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblNomEntreprise.Location = new System.Drawing.Point(11, 23);
+            this.lblNomEntreprise.Location = new System.Drawing.Point(15, 28);
+            this.lblNomEntreprise.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomEntreprise.Name = "lblNomEntreprise";
-            this.lblNomEntreprise.Size = new System.Drawing.Size(69, 16);
+            this.lblNomEntreprise.Size = new System.Drawing.Size(86, 20);
             this.lblNomEntreprise.TabIndex = 31;
             this.lblNomEntreprise.Text = "Entreprise";
             // 
             // txtBoxNomEntreprise
             // 
-            this.txtBoxNomEntreprise.Location = new System.Drawing.Point(117, 22);
+            this.txtBoxNomEntreprise.Location = new System.Drawing.Point(156, 27);
+            this.txtBoxNomEntreprise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxNomEntreprise.MaxLength = 50;
             this.txtBoxNomEntreprise.Name = "txtBoxNomEntreprise";
-            this.txtBoxNomEntreprise.Size = new System.Drawing.Size(210, 20);
+            this.txtBoxNomEntreprise.Size = new System.Drawing.Size(279, 22);
             this.txtBoxNomEntreprise.TabIndex = 10;
             // 
             // lblCodePostal
             // 
             this.lblCodePostal.AutoSize = true;
             this.lblCodePostal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblCodePostal.Location = new System.Drawing.Point(8, 263);
+            this.lblCodePostal.Location = new System.Drawing.Point(11, 324);
+            this.lblCodePostal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodePostal.Name = "lblCodePostal";
-            this.lblCodePostal.Size = new System.Drawing.Size(82, 16);
+            this.lblCodePostal.Size = new System.Drawing.Size(100, 20);
             this.lblCodePostal.TabIndex = 33;
             this.lblCodePostal.Text = "Code Postal";
             // 
             // mTxtBoxCodePostal
             // 
             this.mTxtBoxCodePostal.BeepOnError = true;
-            this.mTxtBoxCodePostal.Location = new System.Drawing.Point(117, 262);
+            this.mTxtBoxCodePostal.Location = new System.Drawing.Point(156, 322);
+            this.mTxtBoxCodePostal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mTxtBoxCodePostal.Mask = "00000";
             this.mTxtBoxCodePostal.Name = "mTxtBoxCodePostal";
             this.mTxtBoxCodePostal.PromptChar = ' ';
-            this.mTxtBoxCodePostal.Size = new System.Drawing.Size(40, 20);
+            this.mTxtBoxCodePostal.Size = new System.Drawing.Size(52, 22);
             this.mTxtBoxCodePostal.TabIndex = 40;
             this.mTxtBoxCodePostal.ValidatingType = typeof(int);
             this.mTxtBoxCodePostal.Click += new System.EventHandler(this.mTxtBoxCodePostal_Click);
@@ -245,11 +264,12 @@
             // mTxtBoxTelephone
             // 
             this.mTxtBoxTelephone.BeepOnError = true;
-            this.mTxtBoxTelephone.Location = new System.Drawing.Point(117, 302);
+            this.mTxtBoxTelephone.Location = new System.Drawing.Point(156, 372);
+            this.mTxtBoxTelephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mTxtBoxTelephone.Mask = "0000000000";
             this.mTxtBoxTelephone.Name = "mTxtBoxTelephone";
             this.mTxtBoxTelephone.PromptChar = ' ';
-            this.mTxtBoxTelephone.Size = new System.Drawing.Size(70, 20);
+            this.mTxtBoxTelephone.Size = new System.Drawing.Size(92, 22);
             this.mTxtBoxTelephone.TabIndex = 45;
             this.mTxtBoxTelephone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mTxtBoxTelephone_MouseClick);
             // 
@@ -257,34 +277,37 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblEmail.Location = new System.Drawing.Point(8, 343);
+            this.lblEmail.Location = new System.Drawing.Point(11, 422);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(42, 16);
+            this.lblEmail.Size = new System.Drawing.Size(51, 20);
             this.lblEmail.TabIndex = 36;
             this.lblEmail.Text = "Email";
             // 
             // txtBoxEmail
             // 
-            this.txtBoxEmail.Location = new System.Drawing.Point(117, 342);
+            this.txtBoxEmail.Location = new System.Drawing.Point(156, 421);
+            this.txtBoxEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxEmail.MaxLength = 128;
             this.txtBoxEmail.Name = "txtBoxEmail";
-            this.txtBoxEmail.Size = new System.Drawing.Size(210, 20);
+            this.txtBoxEmail.Size = new System.Drawing.Size(279, 22);
             this.txtBoxEmail.TabIndex = 50;
             // 
             // comBoxCivilite
             // 
             this.comBoxCivilite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxCivilite.FormattingEnabled = true;
-            this.comBoxCivilite.Location = new System.Drawing.Point(12, 62);
+            this.comBoxCivilite.Location = new System.Drawing.Point(16, 76);
+            this.comBoxCivilite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comBoxCivilite.Name = "comBoxCivilite";
-            this.comBoxCivilite.Size = new System.Drawing.Size(53, 21);
+            this.comBoxCivilite.Size = new System.Drawing.Size(69, 24);
             this.comBoxCivilite.TabIndex = 51;
             // 
             // AjouterClientForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 386);
+            this.ClientSize = new System.Drawing.Size(776, 465);
             this.Controls.Add(this.comBoxCivilite);
             this.Controls.Add(this.txtBoxEmail);
             this.Controls.Add(this.lblEmail);
@@ -308,10 +331,11 @@
             this.Controls.Add(this.txtBoxAdresse);
             this.Controls.Add(this.txtBoxPrenomClient);
             this.Controls.Add(this.txtBoxNomClient);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 425);
+            this.MaximumSize = new System.Drawing.Size(794, 512);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(600, 425);
+            this.MinimumSize = new System.Drawing.Size(794, 512);
             this.Name = "AjouterClientForm";
             this.Text = "Ajouter Client";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImageClient)).EndInit();
