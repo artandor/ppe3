@@ -1,0 +1,36 @@
+1) Rappatriez tous les fichiers du ppe3 via git
+
+------ SQLServerManagement ------
+2) Lancer SQLServerManagement12 (l'icone avec la boite à outil rouge), qui se situe sur la VM ou qui est surement téléchargeable
+3) A gauche : Services SQL Server
+4) Dans la fenêtre principale démarrer le service SQL Server (SQLEXPRESS)
+5) Vous pouvez fermer la fenêtre une fois le Serveur démarré.
+
+----- SQL Server 2014 Management Studio ------
+6) Lancer SQL Server 2014 Management blabla. C'est une icone avec un marteau une clé de 12 et des pointillés verts (manque plus que la faucille)
+7) Type de server : Moteur de base de données (j'ai laissé la valeur par défaut)
+Nom du serveur : localhost\sqlexpress (j'ai laissé la valeur par défaut)
+Authentification : Authentification windows (à modifier du coup)
+8) Faites "se connecter"
+9) Ca vous amene sur un panneau avec l'explorateur d'objets ouvert à gauche. Je me souviens plus de la procédure
+vue en cours mais ce que j'ai fait :
+10) Clic droit sur "Bases de données" dans l'explorateur d'objets (développer localhost\sqlexpress)
+11) "Nouvelle base de données"
+12) nom de la base : "domy59" => Valider directement ensuite
+
+Ensuite, vous allez aller devoir chercher les requetes SQL et les procédures. Le prof à tout écrit, et franchement
+je crois que pour noel il mérite une bonne boite de chocolat. Très largement. Et c'est pas sucer c'est dire merci.
+
+13) Ouvrir l'explorateur de fichier windows, aller dans le dossier du ppe3/sql et ouvrir CréationTables&Procéduresv1_2.sql
+Normalement de base il vous propose d'ouvrir avec SQL Server management, si c'est pas le cas, faites "ouvrir avec => ..."
+Vous pouvez faire executer ensuite. Pour vérifier, aller dans l'explorateur d'objet, petit "F5" et checkez "tables".
+
+14) Vous pouvez fermer les requetes qu'on vient de faire, et vous ouvrez de la meme maniere "CreationViewsV1_0..sql"
+Même chose on execute, et on vérifie apres un "f5" qu'on a bien des vues dans le dossier "vues".
+
+
+## J'ai noté déprecated les deux autres fichiers car ils semblent contenir les meme tables et procédures que le fichier du
+point 13, mais en plus ancien, non mis a jour, et non regroupé. Ils ne sont normalement plus utiles.
+
+C'est fini, normalement tout est ok. Vous avez plus qu'à lancer visual studio et vérifier que le programme marche.
+Tout est censé être fonctionnel avec ça, c'était le cas chez moi !
