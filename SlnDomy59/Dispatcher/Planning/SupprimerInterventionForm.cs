@@ -53,26 +53,26 @@ namespace Dispatcher
         //**************************************************************************************************
         private void InitialiserDGV()
         {
-            //technicienSelectionne = null;
-            //List<int> listIdMaterielDispo = new List<int>();
+            technicienSelectionne = null;
+            List<int> listIdMaterielDispo = new List<int>();
 
-            //dgvTechnicien.Rows.Clear();
+            dgvTechnicien.Rows.Clear();
             //// Récupération de la liste des techniciens et des clients
-            //using (TechnicienManager technicienManager = new TechnicienManager())
-            //{
+            using (TechnicienManager technicienManager = new TechnicienManager())
+            {
             //    // Récuperation de la liste des techniciens
-            //    listTechniciens = technicienManager.getListeTechnicien();
-            //}
+                listTechniciens = technicienManager.getListeTechnicien();
+            }
             //// On rempli le dataGridView des Techniciens 
-            //foreach (Technicien chaqueTechnicien in listTechniciens)
-            //{
-            //    dgvTechnicien.Rows.Add(
-            //        chaqueTechnicien.Nom,
-            //        chaqueTechnicien.Prenom,
-            //        chaqueTechnicien.LoginT);
-            //}
+            foreach (Technicien chaqueTechnicien in listTechniciens)
+            {
+                dgvTechnicien.Rows.Add(
+                    chaqueTechnicien.Nom,
+                    chaqueTechnicien.Prenom,
+                    chaqueTechnicien.LoginT);
+            }
             //// Trier par ordre alphabétique des noms le dataGridView
-            //dgvTechnicien.Sort(dgvTechnicien.Columns[0], ListSortDirection.Ascending);
+            dgvTechnicien.Sort(dgvTechnicien.Columns[0], ListSortDirection.Ascending);
         }
         //**************************************************************************************************
         // methode appelée lorsqu'on sélectionne un autre jour sur le calendrier
@@ -104,38 +104,38 @@ namespace Dispatcher
         private void affichePlanningTechnicien(Technicien technicien)
         {
             // RAZ des listes de rendez-vous et d'interventions
-            //listRdv.Clear();
-            //listIntervention.Clear();
+            listRdv.Clear();
+            listIntervention.Clear();
             //// Raz affichage
-            //lblValDebInter.ResetText();
-            //lblValFinInterv.ResetText();
-            //lblValDureeInterv.ResetText();
+            lblValDebInter.ResetText();
+            lblValFinInterv.ResetText();
+            lblValDureeInterv.ResetText();
             //// Chargement des interventions du jour d'un technicien et peuplement de la liste des rdv à afficher
-            //Intervention uneIntervention = new Intervention();
-            //uneIntervention.DebutIntervention = dayView.StartDate.Date;
-            //uneIntervention.FkLoginT = technicien.LoginT;
-            //try
-            //{
-            //    using (InterventionManager interventionManager = new InterventionManager())
-            //    {
-            //        listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
+            Intervention uneIntervention = new Intervention();
+            uneIntervention.DebutIntervention = dayView.StartDate.Date;
+            uneIntervention.FkLoginT = technicien.LoginT;
+            try
+            {
+                using (InterventionManager interventionManager = new InterventionManager())
+                {
+                    listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
 
-            //        foreach (Intervention chaqueIntervention in listIntervention)
-            //        {
-            //            Appointment rdv = new Appointment();
-            //            rdv.StartDate = chaqueIntervention.DebutIntervention;
-            //            rdv.EndDate = chaqueIntervention.FinIntervention;
-            //            rdv.BorderColor = Color.Red;
-            //            rdv.Title = chaqueIntervention.ObjectifVisite;
-            //            listRdv.Add(rdv);
-            //        }
-            //        dayView.Invalidate(); // On force le conrole à ce redessiner
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+                    foreach (Intervention chaqueIntervention in listIntervention)
+                    {
+                        Appointment rdv = new Appointment();
+                        rdv.StartDate = chaqueIntervention.DebutIntervention;
+                        rdv.EndDate = chaqueIntervention.FinIntervention;
+                        rdv.BorderColor = Color.Red;
+                        rdv.Title = chaqueIntervention.ObjectifVisite;
+                        listRdv.Add(rdv);
+                    }
+                    dayView.Invalidate(); // On force le conrole à ce redessiner
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         //**************************************************************************************************
         private void dgvTechnicien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -152,22 +152,22 @@ namespace Dispatcher
         //**************************************************************************************************
         private void BtnSupprimerIntervention_Click(object sender, EventArgs e)
         {
-            //Intervention interventionASupprimer = new Intervention();
-            //if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne != null))
-            //{
-            //    interventionASupprimer.FkLoginT = technicienSelectionne.LoginT;
-            //    interventionASupprimer.DebutIntervention = debutRdv;
+            Intervention interventionASupprimer = new Intervention();
+            if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne != null))
+            {
+                interventionASupprimer.FkLoginT = technicienSelectionne.LoginT;
+                interventionASupprimer.DebutIntervention = debutRdv;
 
-            //    using (InterventionManager interventionManager = new InterventionManager())
-            //    {
-            //        interventionManager.supprimerIntervention(interventionASupprimer);
-            //    }
-            //    affichePlanningTechnicien(technicienSelectionne);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Sélectionner un technicien et un rendez-vous");
-            //}
+                using (InterventionManager interventionManager = new InterventionManager())
+                {
+                    interventionManager.supprimerIntervention(interventionASupprimer);
+                }
+                affichePlanningTechnicien(technicienSelectionne);
+            }
+            else
+            {
+                MessageBox.Show("Sélectionner un technicien et un rendez-vous");
+            }
         }
         //**************************************************************************************************
         // Au chargement de la page on déselectionne la première cellule du dataGridView
