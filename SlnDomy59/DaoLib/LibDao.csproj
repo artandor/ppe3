@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClMetier\CiviliteManager.cs" />
+    <Compile Include="ClMetier\TechnicienManager.cs" />
     <Compile Include="ClMetier\ClientManager.cs" />
     <Compile Include="ClMetier\EmployeManager.cs" />
     <Compile Include="Connexion\ConnexionSqlServer.cs" />
