@@ -8,7 +8,7 @@ using LibDao;
 
 namespace Dispatcher
 {
-    // Analyser , améliorer et modifier éventuellement
+    
     public partial class SupprimerInterventionForm : Form
     {
         List<Appointment> listRdv = null; // liste des rendez-vous utilisée pour l'affichage calendar
@@ -116,9 +116,9 @@ namespace Dispatcher
             uneIntervention.FkLoginT = technicien.LoginT;
             try
             {
-                using (InterventionManager interventionManager = new InterventionManager())
+               using (InterventionManager interventionManager = new InterventionManager())
                 {
-                    listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
+                   listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
 
                     foreach (Intervention chaqueIntervention in listIntervention)
                     {
@@ -150,7 +150,7 @@ namespace Dispatcher
             }
         }
         //**************************************************************************************************
-        private void BtnSupprimerIntervention_Click(object sender, EventArgs e)
+     /*private void BtnSupprimerIntervention_Click(object sender, EventArgs e)
         {
             Intervention interventionASupprimer = new Intervention();
             if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne != null))
@@ -158,9 +158,9 @@ namespace Dispatcher
                 interventionASupprimer.FkLoginT = technicienSelectionne.LoginT;
                 interventionASupprimer.DebutIntervention = debutRdv;
 
-                using (InterventionManager interventionManager = new InterventionManager())
+                 using (InterventionManager interventionManager = new InterventionManager())
                 {
-                    interventionManager.supprimerIntervention(interventionASupprimer);
+                 // interventionManager.supprimerIntervention(interventionASupprimer);
                 }
                 affichePlanningTechnicien(technicienSelectionne);
             }
@@ -168,7 +168,7 @@ namespace Dispatcher
             {
                 MessageBox.Show("Sélectionner un technicien et un rendez-vous");
             }
-        }
+        }*/
         //**************************************************************************************************
         // Au chargement de la page on déselectionne la première cellule du dataGridView
         // Un try catch permet d'éviter attrape une exception rarissime si la table client est vide (Row null)
