@@ -64,7 +64,7 @@
             this.btnResetSelectionTechniciens.TabIndex = 23;
             this.btnResetSelectionTechniciens.Text = "Rafraichir les techniciens";
             this.btnResetSelectionTechniciens.UseVisualStyleBackColor = true;
-            this.btnResetSelectionTechniciens.Click += new System.EventHandler(this.btnResetSelectionTechnciens_Click);
+            this.btnResetSelectionTechniciens.Click += new System.EventHandler(this.btnResetSelectionTechniciens_Click);
             // 
             // textBoxPrenom
             // 

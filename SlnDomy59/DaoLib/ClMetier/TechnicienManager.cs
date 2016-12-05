@@ -33,6 +33,45 @@ namespace LibDao
             return connexionSqlServer;
         }
 
+        public Technicien getTechnicien(Technicien prmTechnicien)
+        {
+            Technicien Technicien = new Technicien();
+            // Initialisation de la commande associée à la connexion en cours
+            SqlCommand sqlCmd = new SqlCommand();
+            sqlCmd.Connection = sqlConnexion;
+
+            // Type de commande de commande et nom de la procédure appelée
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.CommandText = @"spGetTechnicien";
+
+            // paramètres passées à la procédure stockée
+            sqlCmd.Parameters.Add("@pLoginT", SqlDbType.Int).Value = prmTechnicien.LoginT;
+            sqlCmd.Parameters.Add("@pPrenom", SqlDbType.NVarChar, 20).Value = prmTechnicien.Prenom;
+            sqlCmd.Parameters.Add("@pNom", SqlDbType.NVarChar, 30).Value = prmTechnicien.Nom;
+            try
+            {
+                // On se connecte
+                if (sqlConnexion.State != ConnectionState.Open)
+                {
+                    sqlConnexion.Open();
+                }
+                SqlDataReader dataReader = sqlCmd.ExecuteReader();
+                // Lecture d'un enregistrements contenus dans le DataRead
+                if (dataReader.Read() == true) // un Technicien trouvée
+                {
+                    Technicien.LoginT = (String)dataReader["loginT"];
+                }
+                dataReader.Close();
+            }
+            catch (Exception)
+            {
+                Dispose();
+                throw new Exception("Erreur recherche Technicien \n");
+            }
+            return Technicien;
+        }
+
+        
         public bool insUpdateTechnicien (Technicien prmTechnicien)
         {
             bool retour = false;
@@ -66,11 +105,47 @@ namespace LibDao
             catch (Exception ex)
             {
                 Dispose();
-                throw new Exception("Erreur lors de l'ajout ou modification client");
+                throw new Exception("Erreur lors de l'ajout ou modification Technicien");
             }
             return retour;
         }
 
+        public List<Technicien> getListeTechnicien()
+        {
+            List<Technicien> listTechnicien = new List<Technicien>();
+
+            SqlCommand sqlCmd = new SqlCommand("select * from technicien", sqlConnexion);
+
+            try
+            {
+                // On se connecte
+                if (sqlConnexion.State != ConnectionState.Open)
+                {
+                    sqlConnexion.Open();
+                }
+                SqlDataReader dataReader = sqlCmd.ExecuteReader();
+                // Lecture de tous les enregistrements contenus dans le DataRead
+                while (dataReader.Read())
+                {
+                    // On rempli chque attribut de un Technicien
+                    listTechnicien.Add(new Technicien()
+                    {
+                        LoginT = (String)dataReader["loginT"],
+                        PasswdT = (String)dataReader["passwdT"],
+                        FkIdMateriel = (int)dataReader["fkIdMateriel"],
+                        Prenom = (String)dataReader["prenom"],
+                        Nom = (String)dataReader["nom"]
+                    });
+                }
+                dataReader.Close();
+            }
+            catch (Exception ex)
+            {
+                Dispose();
+                throw new Exception("Erreur lors de la récupération liste des techniciens");
+            }
+            return listTechnicien;
+        }
 
 
         public void Dispose()
