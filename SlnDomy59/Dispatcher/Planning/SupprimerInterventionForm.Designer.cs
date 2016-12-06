@@ -228,7 +228,7 @@
             this.BtnSupprimerIntervention.TabIndex = 2;
             this.BtnSupprimerIntervention.Text = "Supprimer intervention";
             this.BtnSupprimerIntervention.UseVisualStyleBackColor = true;
-            this.BtnSupprimerIntervention.Click += new System.EventHandler(this.BtnSupprimerIntervention_Click);
+            //this.BtnSupprimerIntervention.Click += new System.EventHandler(this.BtnSupprimerIntervention_Click);
             // 
             // monthCalendar
             // 

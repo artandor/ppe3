@@ -45,7 +45,7 @@ namespace LibDao
             sqlCmd.CommandText = @"spGetTechnicien";
 
             // paramètres passées à la procédure stockée
-            sqlCmd.Parameters.Add("@pLoginT", SqlDbType.Int).Value = prmTechnicien.LoginT;
+            sqlCmd.Parameters.Add("@pLoginT", SqlDbType.NVarChar).Value = prmTechnicien.LoginT;
             sqlCmd.Parameters.Add("@pPrenom", SqlDbType.NVarChar, 20).Value = prmTechnicien.Prenom;
             sqlCmd.Parameters.Add("@pNom", SqlDbType.NVarChar, 30).Value = prmTechnicien.Nom;
             try
@@ -130,11 +130,12 @@ namespace LibDao
                     // On rempli chque attribut de un Technicien
                     listTechnicien.Add(new Technicien()
                     {
+                        Nom = (String)dataReader["nom"],
+                        Prenom = (String)dataReader["prenom"],
                         LoginT = (String)dataReader["loginT"],
                         PasswdT = (String)dataReader["passwdT"],
-                        FkIdMateriel = (int)dataReader["fkIdMateriel"],
-                        Prenom = (String)dataReader["prenom"],
-                        Nom = (String)dataReader["nom"]
+                        //cette ligne ne fonctionne pas sans que je sache pourquoi. erreur renvoyée : Le cast spécifié n'est pas valide.
+                        //FkIdMateriel = (int)dataReader["fkIdMateriel"],
                     });
                 }
                 dataReader.Close();
@@ -145,6 +146,45 @@ namespace LibDao
                 throw new Exception("Erreur lors de la récupération liste des techniciens");
             }
             return listTechnicien;
+        }
+
+        public bool supprimerTechnicien(Technicien prmTechnicien)
+        {
+            Technicien technicien = new Technicien();
+            technicien = getTechnicien(prmTechnicien);
+            bool retour = false;
+
+            // Initialisation de la commande associée à la connexion en cours
+            SqlCommand sqlCmd = new SqlCommand();
+            sqlCmd.Connection = sqlConnexion;
+
+            // Type de commande de commande et nom de la procédure appelée
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+
+            if (technicien.LoginT.Trim() != "")
+            {
+                sqlCmd.CommandText = @"spTechnicienDelete";
+                sqlCmd.Parameters.Add("@pLoginT", SqlDbType.NVarChar, 25).Value = technicien.LoginT;
+
+                try
+                {
+                    if (sqlConnexion.State != ConnectionState.Open)
+                    {
+                        sqlConnexion.Open();
+                    }
+                    // On appelle la procédure stockée
+                    if ((int)sqlCmd.ExecuteNonQuery() == -1)
+                    {
+                        retour = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Dispose();
+                    throw new Exception("Erreur lors de la suppression d'un client " + ex.Message);
+                }
+            }
+            return retour;
         }
 
 

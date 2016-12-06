@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using LibDao;
-using System.IO;
-using LibDao.Entites;
 
 namespace Dispatcher
 {
@@ -26,14 +20,14 @@ namespace Dispatcher
             if (InitialiserDGV())
             {
                 btnModifierTechnicien.Enabled = true;
-                if (UtilisateurConnecte.Groupe == "Administration")
+                /*if (UtilisateurConnecte.Groupe == "Administration")
                 {
                     btnSupprimerTechnicien.Enabled = true; // seul un administrateur peut supprimer un client
                 }
                 else
                 {
                     btnSupprimerTechnicien.Enabled = false;
-                }
+                }*/
             }
 
         }
@@ -48,20 +42,19 @@ namespace Dispatcher
                {
                    listTechnicien = technicienManager.getListeTechnicien();
                }
-                foreach (Technicien chaqueTechnicien in listTechnicien)
+
+                foreach (Technicien technicien in listTechnicien)
                 {
                     dgvTechnicien.Rows.Add(
-                        chaqueTechnicien.Nom,
-                        chaqueTechnicien.Prenom,
-                        chaqueTechnicien.LoginT
-                        );
+                        technicien.Nom,
+                        technicien.Prenom,
+                        technicien.LoginT);
                 }
-                dgvTechnicien.Sort(dgvTechnicien.Columns[4], ListSortDirection.Ascending);
+                dgvTechnicien.Sort(dgvTechnicien.Columns[0], ListSortDirection.Ascending);
                 bRequete = true;
            }
            catch
            {
-
            }
             return bRequete;
         }
@@ -69,12 +62,49 @@ namespace Dispatcher
         //**************************************************************************************************
         private void btnModifierTechnicien_Click(object sender, EventArgs e)
         {
-            // TODO
+            if ((technicienSelectionne != null) && (textBoxNom.Text.Trim() != ""))
+            {
+                try
+                {
+                    using (TechnicienManager technicienManager = new TechnicienManager())
+                    {
+                        technicienSelectionne.LoginT = textBoxLoginT.Text.Trim();
+                        technicienSelectionne.Nom = textBoxNom.Text.Trim();
+                        technicienSelectionne.Prenom = textBoxPrenom.Text.Trim();
+
+                        //TODO: Remplacer la valeur fixe par la vraie valeur du matériel lié au technicien
+                        technicienSelectionne.FkIdMateriel = 3;
+
+                        technicienManager.insUpdateTechnicien(technicienSelectionne);
+                        RafraichirIHM();
+                        MessageBox.Show("Les modifications sont enregistrées");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
         //**************************************************************************************************
         private void btnSupprimerTechnicien_Click(object sender, EventArgs e)
         {
-            // TODO
+            if ((technicienSelectionne != null) && (textBoxLoginT.Text.Trim() != ""))
+            {
+                try
+                {
+                    using (TechnicienManager technicienManager = new TechnicienManager()) // appel automatique de la methode dispose qui ferme la connexion
+                    {
+                        technicienManager.supprimerTechnicien(technicienSelectionne);
+                        MessageBox.Show("Technicien supprimmé avec succès");
+                        RafraichirIHM();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
         //**************************************************************************************************
         private void viderChamps()
@@ -83,6 +113,7 @@ namespace Dispatcher
             textBoxNom.ResetText();
             textBoxPrenom.ResetText();
             txtBoxMdp.ResetText();
+            dgvTechnicien.Rows.Clear();
         }
         //**************************************************************************************************
         private void RafraichirIHM()

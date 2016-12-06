@@ -118,7 +118,7 @@ namespace Dispatcher
             {
                using (InterventionManager interventionManager = new InterventionManager())
                 {
-                   listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
+                   //listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
 
                     foreach (Intervention chaqueIntervention in listIntervention)
                     {

@@ -21,7 +21,6 @@ namespace Dispatcher
         //**************************************************************************************************
         private void btnAjouterTechnicien_Click(object sender, EventArgs e)
         {
-            //TODO
             Technicien technicien = new Technicien();
             using (TechnicienManager technicienManager = new TechnicienManager())
             {
@@ -30,7 +29,7 @@ namespace Dispatcher
                 technicien.LoginT = textBoxLoginT.Text.Trim();
                 technicien.PasswdT = txtBoxMdp.Text.Trim();
 
-                //A modifier le jour où la fonction ajouterMateriel est disponible
+                //TODO: A modifier le jour où la fonction ajouterMateriel est disponible
                 //technicien.FkIdMateriel = ;
 
                 try
@@ -49,7 +48,6 @@ namespace Dispatcher
         //**************************************************************************************************
         private void btnViderChamps_Click(object sender, EventArgs e)
         {
-            //TODO
             textBoxNom.ResetText();
             textBoxPrenom.ResetText();
             textBoxLoginT.ResetText();

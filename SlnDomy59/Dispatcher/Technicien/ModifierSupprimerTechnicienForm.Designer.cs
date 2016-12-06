@@ -126,6 +126,7 @@
             this.btnSupprimerTechnicien.TabIndex = 31;
             this.btnSupprimerTechnicien.Text = "Supprimer Technicien";
             this.btnSupprimerTechnicien.UseVisualStyleBackColor = true;
+            this.btnSupprimerTechnicien.Click += new System.EventHandler(this.btnSupprimerTechnicien_Click);
             // 
             // dgvTechnicien
             // 

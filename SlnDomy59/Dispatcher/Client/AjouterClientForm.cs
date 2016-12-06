@@ -61,7 +61,7 @@ namespace Dispatcher
                 String reponseWsValidEmail = "";
                 String email = txtBoxEmail.Text.Trim();
 
-                // TODO
+                // TODO: Ajouter la validation d'email
                 //if(email!=string.Empty)
                 //{
                 //    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
@@ -94,7 +94,7 @@ namespace Dispatcher
                 client.DateCreation = DateTime.Now;
 
 
-                //TODO
+                //TODO: Lier la Fk login au client connecté
                 //client.FkLoginE = UtilisateurConnecte.Login;
                 client.FkLoginE = "phenri";
 
