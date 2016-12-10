@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="PPE3" company="Efficom Lille" webLink="http://" view-date="2016-10-01" view-index="0" gantt-divider-location="353" resource-divider-location="397" version="2.8.1" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="PPE3" company="Efficom Lille" webLink="http://" view-date="2016-10-01" view-index="0" gantt-divider-location="620" resource-divider-location="397" version="2.8.1" locale="fr">
     <description/>
     <view zooming-state="default:8" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="198" order="0"/>
-        <field id="tpd4" name="Date de début" width="76" order="1"/>
-        <field id="tpd5" name="Date de fin" width="75" order="2"/>
+        <field id="tpd3" name="Nom" width="287" order="0"/>
+        <field id="tpd4" name="Date de début" width="165" order="1"/>
+        <field id="tpd5" name="Date de fin" width="164" order="2"/>
         <timeline><![CDATA[2]]></timeline>
         <option id="color.recent"><![CDATA[#9999ff #006666 #3366ff #cc33ff]]></option>
     </view>
@@ -50,7 +50,8 @@
         </task>
         <task id="9" name="Discussion schéma bases de données / entités" color="#8cb6ce" meeting="false" start="2016-10-17" duration="5" complete="0" expand="true"/>
         <task id="10" name="Gestion de l'envoi de SMS" color="#8cb6ce" meeting="false" start="2016-11-28" duration="15" complete="0" expand="true"/>
-        <task id="11" name="Mise en place &quot;Gestion Client&quot;" color="#cc33ff" meeting="false" start="2016-10-24" duration="72" complete="0" expand="true"/>
+        <task id="11" name="Mise en place &quot;Gestion Client&quot;" color="#cc33ff" meeting="false" start="2016-10-24" duration="2" complete="0" expand="true"/>
+        <task id="21" name="Mise en place &quot;Web Services&quot;" color="#8cb6ce" meeting="false" start="2016-12-20" duration="10" complete="0" expand="true"/>
         <task id="14" name="Mise en place &quot;Gestion Interventions&quot;" color="#3366ff" meeting="false" start="2016-10-24" duration="72" complete="0" expand="true"/>
         <task id="16" name="Mise en place &quot;Gestion Matérielle&quot;" color="#006666" meeting="false" start="2016-10-24" duration="72" complete="0" expand="true"/>
         <task id="19" name="Mise en place &quot;Gestion Technicien&quot;" color="#9999ff" meeting="false" start="2016-10-24" duration="72" complete="0" expand="true"/>
