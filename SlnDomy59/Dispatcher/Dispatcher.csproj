@@ -140,7 +140,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ValidEmail.cs" />
-    <Compile Include="Web References\refValidEmail\Reference.cs">
+    <Compile Include="Web References\refWsValidEmail\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -175,14 +175,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\refValidEmail\EV3Library.wsdl" />
-    <None Include="Web References\refValidEmail\Reference.map">
+    <None Include="Web References\refWsValidEmail\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\refValidEmail\ValidateEmailResponse.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
+    <None Include="Web References\refWsValidEmail\WebServiceVerificationEmail.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DaoLib\LibDao.csproj">
@@ -191,25 +188,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://trial.serviceobjects.com/ev3/api.svc%3fsingleWsdl">
+    <WebReferenceUrl Include="https://domy59efficom.ddns.net/WebServiceVerificationEmail.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\refValidEmail\</RelPath>
-      <UpdateFromURL>http://trial.serviceobjects.com/ev3/api.svc%3fsingleWsdl</UpdateFromURL>
+      <RelPath>Web References\refWsValidEmail\</RelPath>
+      <UpdateFromURL>https://domy59efficom.ddns.net/WebServiceVerificationEmail.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Dispatcher_refValidEmail_EV3Library</CachedSettingsPropName>
+      <CachedSettingsPropName>Dispatcher_refWsValidEmail_WebServiceVerificationEmail</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Web References\refWsValidEmail\WebServiceVerificationEmail.disco" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

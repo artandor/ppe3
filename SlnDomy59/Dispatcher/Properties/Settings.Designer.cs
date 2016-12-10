@@ -26,10 +26,10 @@ namespace Dispatcher.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://trial.serviceobjects.com/ev3/api.svc/soap")]
-        public string Dispatcher_refValidEmail_EV3Library {
+        [global::System.Configuration.DefaultSettingValueAttribute("https://domy59efficom.ddns.net/WebServiceVerificationEmail.asmx")]
+        public string Dispatcher_refWsValidEmail_WebServiceVerificationEmail {
             get {
-                return ((string)(this["Dispatcher_refValidEmail_EV3Library"]));
+                return ((string)(this["Dispatcher_refWsValidEmail_WebServiceVerificationEmail"]));
             }
         }
     }

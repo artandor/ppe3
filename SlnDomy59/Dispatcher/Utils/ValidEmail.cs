@@ -2,34 +2,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Dispatcher.refValidEmail;
+using Dispatcher.refWsValidEmail;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Net;
 
-
-//WebService proposé :  emailvalidation3
-//http://trial.serviceobjects.com/ev3/api.svc?singleWsdl   Lien pour obtenir les metadonnées afin de construire le proxy
-//https://www.serviceobjects.com/products/email/email-verification-service
-//https://docs.serviceobjects.com/display/devguide/DOTS+Email+Validation+3
 
 namespace Dispatcher
 {
     public class ValidEmail
     {
-        //La licence obligatoire pour utiliser le webservice
-        static String licence = "WS73-SHR5-OJL1";
-        EV3Library eV3Library=null;
+        WebServiceVerificationEmail proxy = null;
 
+        //*******************************************************************************************************
+        // Cette methode est appelée par le delegue RemoteCertificateValidationDelegate
+        // vérification de la validité du certificat
+        //*******************************************************************************************************
+        bool demandeDeValidationDuCertificat(
+           object sender,
+           X509Certificate certificate,
+           X509Chain chain,
+           SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
+        }
         public ValidEmail(String emailATester, ref String reponseWsValidEmail)
         {
             try
             {
-                eV3Library = new EV3Library();
-                // Appel synchrone
-                ValidateEmailResponse reponse = eV3Library.ValidateEmailFull(emailATester, licence);
-                if (reponse.Error == null)
+                // On vérifie les caractéristiques du certificat renvoyé par le serveur pour eviter 
+                // l'attaque 'middle man"  
+                // la méthode "demandeDeValidationDuCertificat" est appelé en retour du constructeur de 
+                // l'objet RemoteCertificateValidationCallback
+                ServicePointManager.ServerCertificateValidationCallback =
+                    new RemoteCertificateValidationCallback(demandeDeValidationDuCertificat);
+                // Création du proxy (objet chargé de la liaison avec le WebService distant)
+                proxy = new WebServiceVerificationEmail();
+
+                // On prépare un objet pour réaliser une authentification basique (login, mot de passe)
+                // transmis via l'entete soap
+                AuthentificationEnteteSoap authentification = new AuthentificationEnteteSoap();
+                // Création et peuplement de l'objet utilisateur
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.Login = "lbettini";
+                utilisateur.Password = "lbe1739";
+                // L'objet autentification n'a qu'un attribut "user" qui est un objet utilisateur
+                authentification.user = utilisateur;
+                // on transmet l'authentification via l'entete Soap au Webservice
+                proxy.AuthentificationEnteteSoapValue = authentification; // on transmet l'authentification
+                // Appel de la méthode distante et affichage du message de retour du serveur
+                String retourWS = proxy.VerifieEmail(emailATester); // adresse email a vérifier
+
+                if (retourWS != "4")
                 {
-                    if ((reponse.ValidateEmailInfo.IsDeliverable == "true") ||
-                        ((reponse.ValidateEmailInfo.IsDeliverable == "unknown") && (reponse.ValidateEmailInfo.Score < 3))
-                        )
+                    if (retourWS == "0")
                     {
                         reponseWsValidEmail = "Email valide";
                     }

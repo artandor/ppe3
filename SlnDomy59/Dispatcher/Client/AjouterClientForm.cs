@@ -57,16 +57,17 @@ namespace Dispatcher
                 client.Ville = txtBoxVille.Text.Trim();
                 client.CodePostal = mTxtBoxCodePostal.Text;
                 client.NumeroTel = mTxtBoxTelephone.Text;
+
                 // Test validation Email
                 String reponseWsValidEmail = "";
                 String email = txtBoxEmail.Text.Trim();
 
-                // TODO: Ajouter la validation d'email
-                //if(email!=string.Empty)
-                //{
-                //    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
-                //    MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
-                //}
+
+                if(email!=string.Empty)
+                {
+                    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
+                    MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
+                }
 
                 client.Email = email;
                 Byte[] image;
@@ -98,17 +99,20 @@ namespace Dispatcher
                 //client.FkLoginE = UtilisateurConnecte.Login;
                 client.FkLoginE = "phenri";
 
-                try
+                //if (reponseWsValidEmail = "Email valide")
                 {
-                    if (clientManager.insUpdateClient(client))
+                    try
                     {
-                        MessageBox.Show("Client ajouté avec succès");
+                        if (clientManager.insUpdateClient(client))
+                        {
+                            MessageBox.Show("Client ajouté avec succès");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }               
             }
         }
         //**************************************************************************************************

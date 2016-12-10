@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Dispatcher.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Dispatcher_refValidEmail_EV3Library" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trial.serviceobjects.com/ev3/api.svc/soap</Value>
+    <Setting Name="Dispatcher_refWsValidEmail_WebServiceVerificationEmail" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://domy59efficom.ddns.net/WebServiceVerificationEmail.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>
