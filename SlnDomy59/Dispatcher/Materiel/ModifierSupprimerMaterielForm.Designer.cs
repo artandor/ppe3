@@ -96,6 +96,7 @@
             this.comBoxEtatMatériel.Name = "comBoxEtatMatériel";
             this.comBoxEtatMatériel.Size = new System.Drawing.Size(189, 21);
             this.comBoxEtatMatériel.TabIndex = 68;
+            this.comBoxEtatMatériel.SelectedIndexChanged += new System.EventHandler(this.comBoxEtatMatériel_SelectedIndexChanged);
             // 
             // lblEtatMateriel
             // 
@@ -264,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 242);
+            this.ClientSize = new System.Drawing.Size(698, 241);
             this.Controls.Add(this.lblValDateAffectation);
             this.Controls.Add(this.lblDateAffectation);
             this.Controls.Add(this.lblDateEnregistrementMateriel);
