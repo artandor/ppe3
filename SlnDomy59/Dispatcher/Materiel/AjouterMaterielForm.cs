@@ -22,17 +22,37 @@ namespace Dispatcher
             mTxtBoxNumtel.ResetText();
             textBoxCodeIMEI.ResetText();
             textBoxIdGoogle.ResetText();
+            comBoxEtatMateriel.ResetText();
         }
         //**************************************************************************************************
         private void btnAjouterMateriel_Click(object sender, EventArgs e)
         {
             Materiel materiel = new Materiel();
+            using (MaterielManager materielManager = new MaterielManager())
+            {
+                materiel.NumeroSerie = textBoxNumSerie.Text.Trim();
+                materiel.TypeMateriel = textBoxTypeMateriel.Text.Trim();
+                materiel.NumeroTel = mTxtBoxNumtel.Text.Trim();
+                materiel.Imei = textBoxCodeIMEI.Text.Trim();
+                materiel.IdGoogle = textBoxIdGoogle.Text.Trim();
+                materiel.EtatMateriel = comBoxEtatMateriel.Text.Trim();
+                materiel.FkLoginE = "phenri";
+    
 
-            materiel.Prenom = txtBoxPrenomClient.Text.Trim();
-            materiel.Nom = txtBoxNomClient.Text.Trim();
-            materiel.Adresse = txtBoxAdresse.Text.Trim();
-            materiel.CompAdresse = txtBoxAdresseSuite.Text.Trim();
-            materiel.Ville = txtBoxVille.Text.Trim();
+                    try
+                    {
+                        if (materielManager.insertUpdateMateriel(ref materiel))
+                        {
+                            MessageBox.Show("Materiel ajouté avec succès");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+            
+            }
+            
         }
         //**************************************************************************************************
         // permet de placer le curseur de saisie a gauche de la maskTextBox
