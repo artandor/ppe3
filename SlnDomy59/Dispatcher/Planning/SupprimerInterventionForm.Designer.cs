@@ -228,7 +228,7 @@
             this.BtnSupprimerIntervention.TabIndex = 2;
             this.BtnSupprimerIntervention.Text = "Supprimer intervention";
             this.BtnSupprimerIntervention.UseVisualStyleBackColor = true;
-            //this.BtnSupprimerIntervention.Click += new System.EventHandler(this.BtnSupprimerIntervention_Click);
+            this.BtnSupprimerIntervention.Click += new System.EventHandler(this.BtnSupprimerIntervention_Click);
             // 
             // monthCalendar
             // 
@@ -241,7 +241,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 428);
+            this.ClientSize = new System.Drawing.Size(658, 427);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvTechnicien);
             this.Controls.Add(this.lblSelectionTechnicien);

@@ -48,42 +48,48 @@
             // 
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(12, 202);
+            this.lblMessage.Location = new System.Drawing.Point(16, 249);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(134, 16);
+            this.lblMessage.Size = new System.Drawing.Size(164, 20);
             this.lblMessage.TabIndex = 4;
             this.lblMessage.Text = "Message à envoyer :";
             // 
             // textBoxNom
             // 
-            this.textBoxNom.Location = new System.Drawing.Point(235, 74);
+            this.textBoxNom.Location = new System.Drawing.Point(313, 91);
+            this.textBoxNom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.ReadOnly = true;
-            this.textBoxNom.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNom.Size = new System.Drawing.Size(132, 22);
             this.textBoxNom.TabIndex = 1;
             // 
             // textBoxPrenom
             // 
-            this.textBoxPrenom.Location = new System.Drawing.Point(235, 112);
+            this.textBoxPrenom.Location = new System.Drawing.Point(313, 138);
+            this.textBoxPrenom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPrenom.Name = "textBoxPrenom";
             this.textBoxPrenom.ReadOnly = true;
-            this.textBoxPrenom.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPrenom.Size = new System.Drawing.Size(132, 22);
             this.textBoxPrenom.TabIndex = 2;
             // 
             // richTextBoxMessage
             // 
-            this.richTextBoxMessage.Location = new System.Drawing.Point(11, 221);
+            this.richTextBoxMessage.Location = new System.Drawing.Point(15, 272);
+            this.richTextBoxMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBoxMessage.Name = "richTextBoxMessage";
-            this.richTextBoxMessage.Size = new System.Drawing.Size(335, 179);
+            this.richTextBoxMessage.Size = new System.Drawing.Size(445, 219);
             this.richTextBoxMessage.TabIndex = 7;
             this.richTextBoxMessage.Text = "";
             this.richTextBoxMessage.TextChanged += new System.EventHandler(this.richTextBoxMessage_TextChanged);
             // 
             // btnEnvoyerMessage
             // 
-            this.btnEnvoyerMessage.Location = new System.Drawing.Point(101, 429);
+            this.btnEnvoyerMessage.Enabled = false;
+            this.btnEnvoyerMessage.Location = new System.Drawing.Point(135, 528);
+            this.btnEnvoyerMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEnvoyerMessage.Name = "btnEnvoyerMessage";
-            this.btnEnvoyerMessage.Size = new System.Drawing.Size(165, 23);
+            this.btnEnvoyerMessage.Size = new System.Drawing.Size(220, 28);
             this.btnEnvoyerMessage.TabIndex = 8;
             this.btnEnvoyerMessage.Text = "Envoyer le message";
             this.btnEnvoyerMessage.UseVisualStyleBackColor = true;
@@ -100,11 +106,12 @@
             this.ColPrenomTech,
             this.ColLoginTech,
             this.NumTelTechnicien});
-            this.dgvTechnicien.Location = new System.Drawing.Point(12, 12);
+            this.dgvTechnicien.Location = new System.Drawing.Point(16, 15);
+            this.dgvTechnicien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvTechnicien.Name = "dgvTechnicien";
             this.dgvTechnicien.ReadOnly = true;
             this.dgvTechnicien.RowHeadersVisible = false;
-            this.dgvTechnicien.Size = new System.Drawing.Size(208, 165);
+            this.dgvTechnicien.Size = new System.Drawing.Size(277, 203);
             this.dgvTechnicien.TabIndex = 33;
             this.dgvTechnicien.TabStop = false;
             this.dgvTechnicien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTechnicien_CellClick);
@@ -138,37 +145,40 @@
             // mTxtBoxNumtel
             // 
             this.mTxtBoxNumtel.BeepOnError = true;
-            this.mTxtBoxNumtel.Location = new System.Drawing.Point(235, 170);
+            this.mTxtBoxNumtel.Location = new System.Drawing.Point(313, 209);
+            this.mTxtBoxNumtel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mTxtBoxNumtel.Mask = "0000000000";
             this.mTxtBoxNumtel.Name = "mTxtBoxNumtel";
             this.mTxtBoxNumtel.PromptChar = ' ';
-            this.mTxtBoxNumtel.Size = new System.Drawing.Size(70, 20);
+            this.mTxtBoxNumtel.Size = new System.Drawing.Size(92, 22);
             this.mTxtBoxNumtel.TabIndex = 72;
             this.mTxtBoxNumtel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mTxtBoxNumtel_MouseClick);
             // 
             // lblTechSelectionné
             // 
             this.lblTechSelectionné.AutoSize = true;
-            this.lblTechSelectionné.Location = new System.Drawing.Point(226, 42);
+            this.lblTechSelectionné.Location = new System.Drawing.Point(301, 52);
+            this.lblTechSelectionné.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTechSelectionné.Name = "lblTechSelectionné";
-            this.lblTechSelectionné.Size = new System.Drawing.Size(123, 13);
+            this.lblTechSelectionné.Size = new System.Drawing.Size(161, 17);
             this.lblTechSelectionné.TabIndex = 73;
             this.lblTechSelectionné.Text = "Technicien sélectionné :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(232, 144);
+            this.label1.Location = new System.Drawing.Point(309, 177);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.Size = new System.Drawing.Size(144, 17);
             this.label1.TabIndex = 76;
             this.label1.Text = "Numéro destinataire :";
             // 
             // EnvoiSMSForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 464);
+            this.ClientSize = new System.Drawing.Size(475, 560);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTechSelectionné);
             this.Controls.Add(this.mTxtBoxNumtel);
@@ -178,10 +188,11 @@
             this.Controls.Add(this.textBoxPrenom);
             this.Controls.Add(this.textBoxNom);
             this.Controls.Add(this.lblMessage);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(374, 502);
+            this.MaximumSize = new System.Drawing.Size(493, 607);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(374, 502);
+            this.MinimumSize = new System.Drawing.Size(493, 607);
             this.Name = "EnvoiSMSForm";
             this.Text = "Envoi de SMS";
             this.Load += new System.EventHandler(this.EnvoiSMSForm_Load);

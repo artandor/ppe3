@@ -26,10 +26,20 @@ namespace Dispatcher.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://domy59efficom.ddns.net/WebServiceVerificationEmail.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://domy59efficom.eu/WebServiceVerificationEmail.asmx")]
         public string Dispatcher_refWsValidEmail_WebServiceVerificationEmail {
             get {
                 return ((string)(this["Dispatcher_refWsValidEmail_WebServiceVerificationEmail"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://domy59efficom.eu/WebServiceSms.asmx")]
+        public string Dispatcher_refWsSms_WebServiceSms {
+            get {
+                return ((string)(this["Dispatcher_refWsSms_WebServiceSms"]));
             }
         }
     }
