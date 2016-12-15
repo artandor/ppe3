@@ -279,42 +279,42 @@ namespace Dispatcher
         // Enregistrement des nouvelles données de l'intervention
         private void BtnModificationIntervention_Click(object sender, EventArgs e)
         {
-            //if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne != null) &&
-            //    (interventionRdvSelectionne != null))
-            //{
-            //    interventionRdvSelectionne.EtatVisite = cboxEtatIntervention.SelectedItem.ToString();
-            //    if (interventionRdvSelectionne.EtatVisite != String.Empty) // EtatVisite doit être renseigné
-            //    {
-            //        interventionRdvSelectionne.DebutIntervention = debutRdv;
-            //        interventionRdvSelectionne.FinIntervention = finRdv;
-            //        interventionRdvSelectionne.ObjectifVisite = txtBoxObjetVisite.Text;
-            //        // récupération image
-            //        if (pictureBoxImageIntervention.Image == null)
-            //            interventionRdvSelectionne.PhotoLieu = new Byte[0];  // tableau de byte vide
-            //        else
-            //            interventionRdvSelectionne.PhotoLieu = utils.imageToByteArray(pictureBoxImageIntervention.Image);
+            if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne != null) &&
+                (interventionRdvSelectionne != null))
+            {
+                interventionRdvSelectionne.EtatVisite = cboxEtatIntervention.SelectedItem.ToString();
+                if (interventionRdvSelectionne.EtatVisite != String.Empty) // EtatVisite doit être renseigné
+                {
+                    interventionRdvSelectionne.DebutIntervention = debutRdv;
+                    interventionRdvSelectionne.FinIntervention = finRdv;
+                    interventionRdvSelectionne.ObjectifVisite = txtBoxObjetVisite.Text;
+                    // récupération image
+                    if (pictureBoxImageIntervention.Image == null)
+                        interventionRdvSelectionne.PhotoLieu = new Byte[0];  // tableau de byte vide
+                   else
+                        interventionRdvSelectionne.PhotoLieu = utils.imageToByteArray(pictureBoxImageIntervention.Image);
             //        // les champs des textBox
-            //        interventionRdvSelectionne.PrenomContact = txtBoxPrenomContact.Text.Trim();
-            //        interventionRdvSelectionne.NomContact = txtBoxNomContact.Text.Trim();
-            //        interventionRdvSelectionne.TelContact = mTxtBoxTelephone.Text.Trim();
-            //        interventionRdvSelectionne.FkLoginE = UtilisateurConnecte.Login;
-            //        using (InterventionManager interventionManager = new InterventionManager())
-            //        {
+                    interventionRdvSelectionne.PrenomContact = txtBoxPrenomContact.Text.Trim();
+                    interventionRdvSelectionne.NomContact = txtBoxNomContact.Text.Trim();
+                    interventionRdvSelectionne.TelContact = mTxtBoxTelephone.Text.Trim();
+                    //interventionRdvSelectionne.FkLoginE = UtilisateurConnecte.Login;
+                    using (InterventionManager interventionManager = new InterventionManager())
+                    {
             //            // On persiste l'entité en BDD
-            //            interventionManager.updateIntervention(interventionRdvSelectionne);
-            //        }
-            //        affichePlanningTechnicien(technicienSelectionne);
-            //        interventionRdvSelectionne = null;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Ne pas laisser l'état visite vide");
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("sélectionner un rendez-vous, un technicien");
-            //}
+                        interventionManager.updateIntervention(interventionRdvSelectionne);
+                    }
+                    affichePlanningTechnicien(technicienSelectionne);
+                    interventionRdvSelectionne = null;
+                }
+                else
+                {
+                    MessageBox.Show("Ne pas laisser l'état visite vide");
+                }
+            }
+            else
+            {
+                MessageBox.Show("sélectionner un rendez-vous, un technicien");
+            }
         }
         //**************************************************************************************************
         // permet de placer le curseur de saisie a gauche de la maskTextBox
