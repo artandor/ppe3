@@ -160,6 +160,9 @@
     <EmbeddedResource Include="Client\ModifierSupprimerClientForm.resx">
       <DependentUpon>ModifierSupprimerClientForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Planning\SupprimerInterventionForm.resx">
+      <DependentUpon>SupprimerInterventionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
