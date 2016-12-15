@@ -51,7 +51,6 @@
             this.textBoxNumSerie.Name = "textBoxNumSerie";
             this.textBoxNumSerie.Size = new System.Drawing.Size(189, 20);
             this.textBoxNumSerie.TabIndex = 5;
-            this.textBoxNumSerie.TextChanged += new System.EventHandler(this.textBoxNumSerie_TextChanged);
             // 
             // textBoxTypeMateriel
             // 
@@ -60,7 +59,6 @@
             this.textBoxTypeMateriel.Name = "textBoxTypeMateriel";
             this.textBoxTypeMateriel.Size = new System.Drawing.Size(189, 20);
             this.textBoxTypeMateriel.TabIndex = 4;
-            this.textBoxTypeMateriel.TextChanged += new System.EventHandler(this.textBoxTypeMateriel_TextChanged);
             // 
             // btnViderChamps
             // 

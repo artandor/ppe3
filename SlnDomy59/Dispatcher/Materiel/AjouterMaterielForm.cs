@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using System.IO;
 using LibDao;
 
@@ -26,13 +25,9 @@ namespace Dispatcher
         //**************************************************************************************************
         private void btnAjouterMateriel_Click(object sender, EventArgs e)
         {
-            Materiel materiel = new Materiel();
-
-            materiel.Prenom = txtBoxPrenomClient.Text.Trim();
-            materiel.Nom = txtBoxNomClient.Text.Trim();
-            materiel.Adresse = txtBoxAdresse.Text.Trim();
-            materiel.CompAdresse = txtBoxAdresseSuite.Text.Trim();
-            materiel.Ville = txtBoxVille.Text.Trim();
+            // créer un matériel et lui affecte les champs remplis 
+           // Ajoute le matériel en BDD       
+           // TODO
         }
         //**************************************************************************************************
         // permet de placer le curseur de saisie a gauche de la maskTextBox

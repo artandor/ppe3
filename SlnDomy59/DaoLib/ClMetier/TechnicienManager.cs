@@ -48,7 +48,6 @@ namespace LibDao
             sqlCmd.Parameters.Add("@pLoginT", SqlDbType.NVarChar).Value = prmTechnicien.LoginT;
             sqlCmd.Parameters.Add("@pPrenom", SqlDbType.NVarChar, 20).Value = prmTechnicien.Prenom;
             sqlCmd.Parameters.Add("@pNom", SqlDbType.NVarChar, 30).Value = prmTechnicien.Nom;
-
             try
             {
                 // On se connecte

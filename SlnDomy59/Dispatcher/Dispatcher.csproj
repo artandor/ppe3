@@ -160,15 +160,6 @@
     <EmbeddedResource Include="Client\ModifierSupprimerClientForm.resx">
       <DependentUpon>ModifierSupprimerClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Materiel\AffecterMaterielForm.resx">
-      <DependentUpon>AffecterMaterielForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Materiel\AjouterMaterielForm.resx">
-      <DependentUpon>AjouterMaterielForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Materiel\ModifierSupprimerMaterielForm.resx">
-      <DependentUpon>ModifierSupprimerMaterielForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -184,7 +175,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

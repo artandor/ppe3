@@ -70,10 +70,5 @@ namespace Dispatcher
         {
             mTxtBoxNumtel.SelectionStart = 0;
         }
-
-        private void comBoxEtatMatériel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
