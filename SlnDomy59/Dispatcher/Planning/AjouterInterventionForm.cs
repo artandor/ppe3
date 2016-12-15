@@ -42,7 +42,7 @@ namespace Dispatcher
             listIntervention = new List<Intervention>();
             listRdv = new List<Appointment>();
         }
-       
+
         //**************************************************************************************************
         // Event déclenché lorsque un nouveau rdv a été réalisé
         private void dayView_ResolveAppointments(object sender, ResolveAppointmentsEventArgs args)
@@ -57,10 +57,51 @@ namespace Dispatcher
         //**************************************************************************************************
         private void InitialiserDGV()
         {
-            //TODO Initialiser les deux dataGridView
+            technicienSelectionne = null;
+            List<int> listIdMaterielDispo = new List<int>();
+
+            dgvTechnicien.Rows.Clear();
+            // Récupération de la liste des techniciens et des clients
+            using (TechnicienManager technicienManager = new TechnicienManager())
+            {
+                using (ClientManager clientManager = new ClientManager(technicienManager.getConnexion()))
+                {
+                    // créer un liste de clients et récupère les clients de la BDD
+                    listClient = clientManager.getListeClient();
+                    // Récuperation de la liste des techniciens
+                    listTechniciens = technicienManager.getListeTechnicien();
+                }
+            }
+            // On rempli le dataGridView des Techniciens 
+            foreach (Technicien chaqueTechnicien in listTechniciens)
+            {
+                dgvTechnicien.Rows.Add(
+                    chaqueTechnicien.Nom,
+                    chaqueTechnicien.Prenom,
+                    chaqueTechnicien.LoginT);
+            }
+            // Trier par ordre alphabétique des noms le dataGridView
+            dgvTechnicien.Sort(dgvTechnicien.Columns[0], ListSortDirection.Ascending);
+            // On rempli le dataGridView des Clients
+            foreach (Client chaqueClient in listClient)
+            {
+                dgvClient.Rows.Add(
+                    chaqueClient.IdClient,
+                    chaqueClient.Entreprise,
+                    chaqueClient.Prenom,
+                    chaqueClient.Nom);
+            }
+            // Trie par ordre alphabétique des noms
+            dgvClient.Sort(dgvClient.Columns[3], ListSortDirection.Ascending);
+
+            // clear des textBox
+            txtBoxPrenomContact.ResetText();
+            txtBoxNomContact.ResetText();
+            mTxtBoxTelephone.ResetText();
+            txtBoxObjetVisite.ResetText();
         }
         //**************************************************************************************************
-       // methode appelée lorsqu'on sélectionne un autre jour sur le calendrier
+        // methode appelée lorsqu'on sélectionne un autre jour sur le calendrier
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             dayView.StartDate = monthCalendar.SelectionStart;
@@ -70,7 +111,7 @@ namespace Dispatcher
             }
         }
         //**************************************************************************************************
-       // méthode appelée lorsqu'on change la sélection d'heure sur le calendar
+        // méthode appelée lorsqu'on change la sélection d'heure sur le calendar
         private void dayView_SelectionChanged(object sender, EventArgs e)
         {
             if (dayView.Selection == SelectionType.DateRange) // on sélectionne une plage horaire
@@ -119,33 +160,33 @@ namespace Dispatcher
         //**************************************************************************************************
         private void affichePlanningTechnicien(Technicien technicien)
         {
-            //listRdv.Clear();
-            //listIntervention.Clear();
-            //Intervention uneIntervention = new Intervention();
-            //uneIntervention.DebutIntervention = dayView.StartDate.Date;
-            //uneIntervention.FkLoginT = technicien.LoginT;
-            //try
-            //{
-            //    using (InterventionManager interventionManager = new InterventionManager())
-            //    {
-            //        listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
+            listRdv.Clear();
+            listIntervention.Clear();
+            Intervention uneIntervention = new Intervention();
+            uneIntervention.DebutIntervention = dayView.StartDate.Date;
+            uneIntervention.FkLoginT = technicien.LoginT;
+            try
+            {
+                using (InterventionManager interventionManager = new InterventionManager())
+                {
+                    listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
 
-            //        foreach (Intervention chaqueIntervention in listIntervention)
-            //        {
-            //            Appointment rdv = new Appointment();
-            //            rdv.StartDate = chaqueIntervention.DebutIntervention;
-            //            rdv.EndDate = chaqueIntervention.FinIntervention;
-            //            rdv.BorderColor = Color.Red;
-            //            rdv.Title = chaqueIntervention.ObjectifVisite;
-            //            listRdv.Add(rdv);
-            //        }
-            //        dayView.Invalidate(); // On force le conrole à ce redessiner
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    //Console.WriteLine(ex.Message);
-            //}
+                    foreach (Intervention chaqueIntervention in listIntervention)
+                    {
+                        Appointment rdv = new Appointment();
+                        rdv.StartDate = chaqueIntervention.DebutIntervention;
+                        rdv.EndDate = chaqueIntervention.FinIntervention;
+                        rdv.BorderColor = Color.Red;
+                        rdv.Title = chaqueIntervention.ObjectifVisite;
+                        listRdv.Add(rdv);
+                    }
+                    dayView.Invalidate(); // On force le conrole à ce redessiner
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         //**************************************************************************************************
@@ -181,37 +222,39 @@ namespace Dispatcher
         //**************************************************************************************************
         private void BtnValidationIntervention_Click(object sender, EventArgs e)
         {
-            //Intervention intervention = new Intervention();
-            //intervention.CompteRendu = string.Empty;
-            //if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne!=null) && (clientSelectionne!=null))
-            //{
-            //    intervention.DebutIntervention = debutRdv;
-            //    intervention.FinIntervention = finRdv;
-            //    intervention.ObjectifVisite = txtBoxObjetVisite.Text;
-            //    // récupération image
-            //    if (pictureBoxImageIntervention.Image == null)
-            //        intervention.PhotoLieu = new Byte[0];  // null
-            //    else
-            //        intervention.PhotoLieu = utils.imageToByteArray(pictureBoxImageIntervention.Image);
-            //    // les champs des textBox
-            //    intervention.PrenomContact = txtBoxPrenomContact.Text.Trim();
-            //    intervention.NomContact = txtBoxNomContact.Text.Trim();
-            //    intervention.TelContact = mTxtBoxTelephone.Text.Trim();
-            //    intervention.EtatVisite = "planifiée";
-            //    intervention.FkLoginE = UtilisateurConnecte.Login;
-            //    intervention.FkIdClient = clientSelectionne.IdClient;
-            //    intervention.FkLoginT = technicienSelectionne.LoginT;
-            //    using (InterventionManager interventionManager = new InterventionManager()) 
-            //    {
-            //        // On persiste l'entité en BDD
-            //        interventionManager.ajouterIntervention(intervention);
-            //    }
-            //    affichePlanningTechnicien(technicienSelectionne);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("sélectionner l'heure de rendez-vous, un technicien et un client");
-            //}
+            Intervention intervention = new Intervention();
+            intervention.CompteRendu = string.Empty;
+            if ((debutRdv != DateTime.Now.Date) && (technicienSelectionne != null) && (clientSelectionne != null))
+            {
+                intervention.DebutIntervention = debutRdv;
+                intervention.FinIntervention = finRdv;
+                intervention.ObjectifVisite = txtBoxObjetVisite.Text;
+                // récupération image
+                if (pictureBoxImageIntervention.Image == null)
+                    intervention.PhotoLieu = new Byte[0];  // null
+                else
+                    intervention.PhotoLieu = utils.imageToByteArray(pictureBoxImageIntervention.Image);
+                // les champs des textBox
+                intervention.PrenomContact = txtBoxPrenomContact.Text.Trim();
+                intervention.NomContact = txtBoxNomContact.Text.Trim();
+                intervention.TelContact = mTxtBoxTelephone.Text.Trim();
+                intervention.EtatVisite = "planifiée";
+                //intervention.FkLoginE = UtilisateurConnecte.Login;
+                //TODO
+                intervention.FkLoginE = "phenri"; // A supprimer lorsque connecté sur DC
+                intervention.FkIdClient = clientSelectionne.IdClient;
+                intervention.FkLoginT = technicienSelectionne.LoginT;
+                using (InterventionManager interventionManager = new InterventionManager())
+                {
+                    // On persiste l'entité en BDD
+                    interventionManager.ajouterIntervention(intervention);
+                }
+                affichePlanningTechnicien(technicienSelectionne);
+            }
+            else
+            {
+                MessageBox.Show("sélectionner l'heure de rendez-vous, un technicien et un client");
+            }
         }
         //**************************************************************************************************
         private void dayView_AppointmentMove(object sender, AppointmentEventArgs e)

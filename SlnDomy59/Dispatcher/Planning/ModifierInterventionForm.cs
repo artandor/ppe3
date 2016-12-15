@@ -63,7 +63,23 @@ namespace Dispatcher
         //**************************************************************************************************
         private void InitialiserDGV()
         {
-          // TODO
+            bool bRequete = false;
+            try
+            {
+                using (TechnicienManager technicienManager = new TechnicienManager())
+                {
+                    listTechniciens = technicienManager.getListeTechnicien();
+                }
+                foreach (Technicien technicien in listTechniciens)
+                {
+                    dgvTechnicien.Rows.Add(technicien.Nom,technicien.Prenom);
+                }
+                dgvTechnicien.Sort(dgvTechnicien.Columns[4], ListSortDirection.Ascending);
+                bRequete = true;
+            }
+            catch
+            {
+            }
         }
         //**************************************************************************************************
         void clearTextBox()
@@ -98,42 +114,42 @@ namespace Dispatcher
         // chargement d'une intervention à partir de la BDD (heure de début, login du technicien)
         void loadIntervention()
         {
-            //interventionRdvSelectionne = new Intervention();
-            //interventionRdvSelectionne.DebutIntervention = debutRdv;
-            //interventionRdvSelectionne.FkLoginT = technicienSelectionne.LoginT;
-            //Client client = new Client();
-            //using (InterventionManager interventionManager = new InterventionManager())
-            //{
-            //    using (ClientManager clientManager = new ClientManager(interventionManager.getConnexion()))
-            //    {
-            //        interventionRdvSelectionne = interventionManager.getIntervention(interventionRdvSelectionne);
-            //        if (interventionRdvSelectionne.FkIdClient != 0) // as-t-on trouvé une intervention correspondant au RDV
-            //        { // si oui on affiche les données
-            //            txtBoxPrenomContact.Text = interventionRdvSelectionne.PrenomContact;
-            //            txtBoxNomContact.Text = interventionRdvSelectionne.NomContact;
-            //            mTxtBoxTelephone.Text = interventionRdvSelectionne.TelContact;
-            //            txtBoxObjetVisite.Text = interventionRdvSelectionne.ObjectifVisite;
-            //            cboxEtatIntervention.Text = interventionRdvSelectionne.EtatVisite;
-            //            Byte[] image = interventionRdvSelectionne.PhotoLieu;
-            //            if (image == null || image.Length == 0)
-            //            {
-            //                pictureBoxImageIntervention.Image = null;
-            //            }
-            //            else
-            //            {
-            //                pictureBoxImageIntervention.Image = utils.byteArrayToImage(image);
-            //            }
+            interventionRdvSelectionne = new Intervention();
+            interventionRdvSelectionne.DebutIntervention = debutRdv;
+            interventionRdvSelectionne.FkLoginT = technicienSelectionne.LoginT;
+            Client client = new Client();
+            using (InterventionManager interventionManager = new InterventionManager())
+            {
+                using (ClientManager clientManager = new ClientManager(interventionManager.getConnexion()))
+                {
+                    interventionRdvSelectionne = interventionManager.getIntervention(interventionRdvSelectionne);
+                    if (interventionRdvSelectionne.FkIdClient != 0) // as-t-on trouvé une intervention correspondant au RDV
+                    { // si oui on affiche les données
+                        txtBoxPrenomContact.Text = interventionRdvSelectionne.PrenomContact;
+                        txtBoxNomContact.Text = interventionRdvSelectionne.NomContact;
+                        mTxtBoxTelephone.Text = interventionRdvSelectionne.TelContact;
+                        txtBoxObjetVisite.Text = interventionRdvSelectionne.ObjectifVisite;
+                        cboxEtatIntervention.Text = interventionRdvSelectionne.EtatVisite;
+                        Byte[] image = interventionRdvSelectionne.PhotoLieu;
+                        if (image == null || image.Length == 0)
+                        {
+                            pictureBoxImageIntervention.Image = null;
+                        }
+                        else
+                        {
+                            pictureBoxImageIntervention.Image = utils.byteArrayToImage(image);
+                        }
 
-            //            client.IdClient = interventionRdvSelectionne.FkIdClient;
-            //            client = clientManager.getClient(client);
-            //            // On affiche les données du client
-            //            txtBoxNomEntreprise.Text = client.Entreprise;
-            //            txtBoxPrenomClient.Text = client.Prenom;
-            //            txtBoxNomClient.Text = client.Nom;
-            //            maskedTextBoxTelClient.Text = client.NumeroTel;
-            //        }
-            //    }
-            //}
+                        client.IdClient = interventionRdvSelectionne.FkIdClient;
+                        client = clientManager.getClient(client);
+                        // On affiche les données du client
+                        txtBoxNomEntreprise.Text = client.Entreprise;
+                        txtBoxPrenomClient.Text = client.Prenom;
+                        txtBoxNomClient.Text = client.Nom;
+                        maskedTextBoxTelClient.Text = client.NumeroTel;
+                    }
+                }
+            }
         }
 
         //**************************************************************************************************
@@ -188,39 +204,39 @@ namespace Dispatcher
         // Cette méthode récupère les rdv d'un technicien en BDD pour peupler la liste des rendez-vous à afficher
         private void affichePlanningTechnicien(Technicien technicien)
         {
-            //selectionRdvPremiereFois = true; // après affichage du planning la sélection d'un rendez-vous sera la premiere selection
-            //// Raz des listes contenant les rdv affichées et les instreventions d'un technicien récupérées en BDD
-            //listRdv.Clear();
-            //listIntervention.Clear();
-            //// Raz de l'affichage
-            //clearTextBox();
-            //// On charge la liste des rendez-vous d'un technicien pour un jour donné
-            //Intervention uneIntervention = new Intervention();
-            //uneIntervention.DebutIntervention = dayView.StartDate.Date;
-            //uneIntervention.FkLoginT = technicien.LoginT;
-            //try
-            //{
-            //    using (InterventionManager interventionManager = new InterventionManager())
-            //    {
-            //        listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
+            selectionRdvPremiereFois = true; // après affichage du planning la sélection d'un rendez-vous sera la premiere selection
+            // Raz des listes contenant les rdv affichées et les interventions d'un technicien récupérées en BDD
+            listRdv.Clear();
+            listIntervention.Clear();
+            // Raz de l'affichage
+            clearTextBox();
+            // On charge la liste des rendez-vous d'un technicien pour un jour donné
+            Intervention uneIntervention = new Intervention();
+            uneIntervention.DebutIntervention = dayView.StartDate.Date;
+            uneIntervention.FkLoginT = technicien.LoginT;
+            try
+            {
+                using (InterventionManager interventionManager = new InterventionManager())
+                {
+                    listIntervention = interventionManager.listeInterventionsTechnicien(uneIntervention);
 
-            //        foreach (Intervention chaqueIntervention in listIntervention)
-            //        {
-            //            // on peuple la liste des rdv a afficher 
-            //            Appointment rdv = new Appointment();
-            //            rdv.StartDate = chaqueIntervention.DebutIntervention;
-            //            rdv.EndDate = chaqueIntervention.FinIntervention;
-            //            rdv.BorderColor = Color.Red; // la couleur de l'entourage
-            //            rdv.Title = chaqueIntervention.ObjectifVisite; // le texte à l'intérieur du rdv
-            //            listRdv.Add(rdv);
-            //        }
-            //        dayView.Invalidate(); // On force le controle à se redessiner
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    //Console.WriteLine(ex.Message);
-            //}
+                    foreach (Intervention chaqueIntervention in listIntervention)
+                    {
+                        // on peuple la liste des rdv a afficher 
+                        Appointment rdv = new Appointment();
+                        rdv.StartDate = chaqueIntervention.DebutIntervention;
+                        rdv.EndDate = chaqueIntervention.FinIntervention;
+                        rdv.BorderColor = Color.Red; // la couleur de l'entourage
+                        rdv.Title = chaqueIntervention.ObjectifVisite; // le texte à l'intérieur du rdv
+                        listRdv.Add(rdv);
+                    }
+                    dayView.Invalidate(); // On force le controle à se redessiner
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         //**************************************************************************************************
         private void dgvTechnicien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -228,10 +244,16 @@ namespace Dispatcher
             int IdxLigneActuelle = e.RowIndex;
             if (IdxLigneActuelle >= 0)
             {
-                string loginTechnicien = (string)dgvTechnicien.Rows[IdxLigneActuelle].Cells[2].Value;
+                /*string loginTechnicien = (String)dgvTechnicien.Rows[IdxLigneActuelle].Cells[2].Value;
                 int indiceDansListTechnicien = listTechniciens.FindIndex(item => item.LoginT == loginTechnicien);
                 technicienSelectionne = listTechniciens[indiceDansListTechnicien];
-                affichePlanningTechnicien(technicienSelectionne);
+                affichePlanningTechnicien(technicienSelectionne);*/
+            
+            //TODO: demander au prof pourquoi le code au dessus ne marche pas
+            String nom = (String)dgvTechnicien.Rows[IdxLigneActuelle].Cells[0].Value;
+            int indiceDansListTechnicien = listTechniciens.FindIndex(leTechnicienCherché => leTechnicienCherché.Nom == nom);
+            technicienSelectionne = listTechniciens[indiceDansListTechnicien];
+            affichePlanningTechnicien(technicienSelectionne);
             }
         }
         //**************************************************************************************************
