@@ -99,7 +99,7 @@ namespace Dispatcher
                 //client.FkLoginE = UtilisateurConnecte.Login;
                 client.FkLoginE = "phenri";
 
-                //if (reponseWsValidEmail = "Email valide")
+                if (reponseWsValidEmail == "Email valide")
                 {
                     try
                     {
@@ -112,6 +112,10 @@ namespace Dispatcher
                     {
                         MessageBox.Show(ex.Message);
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Client non ajouté : Email non existant");
                 }
             }
         }

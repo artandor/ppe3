@@ -12,17 +12,28 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="VerifieEmail">
+      <s:element name="envoyerSms">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sms" type="tns:Sms" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="VerifieEmailResponse">
+      <s:complexType name="Sms">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSms" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumDestinataire" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TextMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AEnvoyer" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EtatMessage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FkUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEnvoi" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="envoyerSmsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="VerifieEmailResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="envoyerSmsResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -49,28 +60,26 @@
   <wsdl:message name="TestSoapOut">
     <wsdl:part name="parameters" element="tns:TestResponse" />
   </wsdl:message>
-  <wsdl:message name="VerifieEmailSoapIn">
-    <wsdl:part name="parameters" element="tns:VerifieEmail" />
+  <wsdl:message name="envoyerSmsSoapIn">
+    <wsdl:part name="parameters" element="tns:envoyerSms" />
   </wsdl:message>
-  <wsdl:message name="VerifieEmailSoapOut">
-    <wsdl:part name="parameters" element="tns:VerifieEmailResponse" />
+  <wsdl:message name="envoyerSmsSoapOut">
+    <wsdl:part name="parameters" element="tns:envoyerSmsResponse" />
   </wsdl:message>
-  <wsdl:message name="VerifieEmailAuthentificationEnteteSoap">
+  <wsdl:message name="envoyerSmsAuthentificationEnteteSoap">
     <wsdl:part name="AuthentificationEnteteSoap" element="tns:AuthentificationEnteteSoap" />
   </wsdl:message>
-  <wsdl:portType name="WebServiceVerificationEmailSoap">
+  <wsdl:portType name="WebServiceSmsSoap">
     <wsdl:operation name="Test">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Un message pour les tests</wsdl:documentation>
       <wsdl:input message="tns:TestSoapIn" />
       <wsdl:output message="tns:TestSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="VerifieEmail">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validation addr email; 0--&gt; Valide 3--&gt; non valide  4--&gt;Erreur authentification</wsdl:documentation>
-      <wsdl:input message="tns:VerifieEmailSoapIn" />
-      <wsdl:output message="tns:VerifieEmailSoapOut" />
+    <wsdl:operation name="envoyerSms">
+      <wsdl:input message="tns:envoyerSmsSoapIn" />
+      <wsdl:output message="tns:envoyerSmsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="WebServiceVerificationEmailSoap" type="tns:WebServiceVerificationEmailSoap">
+  <wsdl:binding name="WebServiceSmsSoap" type="tns:WebServiceSmsSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Test">
       <soap:operation soapAction="http://efficom.org/Test" style="document" />
@@ -81,18 +90,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerifieEmail">
-      <soap:operation soapAction="http://efficom.org/VerifieEmail" style="document" />
+    <wsdl:operation name="envoyerSms">
+      <soap:operation soapAction="http://efficom.org/envoyerSms" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
-        <soap:header message="tns:VerifieEmailAuthentificationEnteteSoap" part="AuthentificationEnteteSoap" use="literal" />
+        <soap:header message="tns:envoyerSmsAuthentificationEnteteSoap" part="AuthentificationEnteteSoap" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="WebServiceVerificationEmailSoap12" type="tns:WebServiceVerificationEmailSoap">
+  <wsdl:binding name="WebServiceSmsSoap12" type="tns:WebServiceSmsSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Test">
       <soap12:operation soapAction="http://efficom.org/Test" style="document" />
@@ -103,23 +112,23 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerifieEmail">
-      <soap12:operation soapAction="http://efficom.org/VerifieEmail" style="document" />
+    <wsdl:operation name="envoyerSms">
+      <soap12:operation soapAction="http://efficom.org/envoyerSms" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
-        <soap12:header message="tns:VerifieEmailAuthentificationEnteteSoap" part="AuthentificationEnteteSoap" use="literal" />
+        <soap12:header message="tns:envoyerSmsAuthentificationEnteteSoap" part="AuthentificationEnteteSoap" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="WebServiceVerificationEmail">
-    <wsdl:port name="WebServiceVerificationEmailSoap" binding="tns:WebServiceVerificationEmailSoap">
-      <soap:address location="https://domy59efficom.eu/WebServiceVerificationEmail.asmx" />
+  <wsdl:service name="WebServiceSms">
+    <wsdl:port name="WebServiceSmsSoap" binding="tns:WebServiceSmsSoap">
+      <soap:address location="https://domy59efficom.eu/WebServiceSms.asmx" />
     </wsdl:port>
-    <wsdl:port name="WebServiceVerificationEmailSoap12" binding="tns:WebServiceVerificationEmailSoap12">
-      <soap12:address location="https://domy59efficom.eu/WebServiceVerificationEmail.asmx" />
+    <wsdl:port name="WebServiceSmsSoap12" binding="tns:WebServiceSmsSoap12">
+      <soap12:address location="https://domy59efficom.eu/WebServiceSms.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -39,7 +39,7 @@ namespace Dispatcher
             cbxEtatClient.DataSource = listEtatClient;
 
             this.dgvClient.Columns["ColCivilité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            
             if (InitialiserDGV())
             {
                 btnModifierClient.Enabled = true;
@@ -142,11 +142,11 @@ namespace Dispatcher
                         // Test validation Email
                         String reponseWsValidEmail = "";
                         String email = txtBoxEmail.Text.Trim();
-                        //if (email != string.Empty)
-                        //{
-                        //    ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
-                        //    MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
-                        //}
+                        if (email != string.Empty)
+                        {
+                            ValidEmail ValidEmail = new ValidEmail(txtBoxEmail.Text.Trim(), ref reponseWsValidEmail);
+                            MessageBox.Show(reponseWsValidEmail); // uniquement une indication, Le dispatcher peut modifier l'émail plus tard
+                        }
                         clientSelectionne.Email = email;
                         clientSelectionne.Latitude = mTxtBoxLatitude.Text;
                         clientSelectionne.Latitude = clientSelectionne.Latitude.Replace(",", ".");
@@ -166,9 +166,16 @@ namespace Dispatcher
                         clientSelectionne.FkLoginE = "phenri";
 
                         // On persiste les modifications
-                        clientManager.insUpdateClient(clientSelectionne);
-                        rafraichirIHM();
-                        MessageBox.Show("Les modifications sont enregistrées");
+                        if (reponseWsValidEmail == "Email valide")
+                        {
+                            clientManager.insUpdateClient(clientSelectionne);
+                            rafraichirIHM();
+                            MessageBox.Show("Les modifications sont enregistrées");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Les modifications n'ont pas pu être enregistrées : e-mail invalide.");
+                        }
                     }
                 }
                 catch (Exception ex)
