@@ -160,6 +160,12 @@
     <EmbeddedResource Include="Client\ModifierSupprimerClientForm.resx">
       <DependentUpon>ModifierSupprimerClientForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Materiel\AffecterMaterielForm.resx">
+      <DependentUpon>AffecterMaterielForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materiel\AjouterMaterielForm.resx">
+      <DependentUpon>AjouterMaterielForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Planning\SupprimerInterventionForm.resx">
       <DependentUpon>SupprimerInterventionForm.cs</DependentUpon>
     </EmbeddedResource>

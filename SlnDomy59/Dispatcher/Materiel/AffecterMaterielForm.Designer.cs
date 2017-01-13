@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             this.lblChoisirMateriel = new System.Windows.Forms.Label();
-            this.listBoxSelectionMateriels = new System.Windows.Forms.ListBox();
             this.mTxtBoxNumtel = new System.Windows.Forms.MaskedTextBox();
             this.lblNumeroTel = new System.Windows.Forms.Label();
-            this.textBoxNumSerie = new System.Windows.Forms.TextBox();
-            this.textBoxTypeMateriel = new System.Windows.Forms.TextBox();
-            this.lblNumeroSerie = new System.Windows.Forms.Label();
-            this.lblTypeMateriel = new System.Windows.Forms.Label();
             this.lblChoixTechnicien = new System.Windows.Forms.Label();
             this.dgvListeTechniciens = new System.Windows.Forms.DataGridView();
             this.ColLoginT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColPrenomTech = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNomTech = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAttribuerMateriel = new System.Windows.Forms.Button();
+            this.dgvListeMateriel = new System.Windows.Forms.DataGridView();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumSerie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeTechniciens)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListeMateriel)).BeginInit();
             this.SuspendLayout();
             // 
             // lblChoisirMateriel
@@ -53,17 +52,6 @@
             this.lblChoisirMateriel.Size = new System.Drawing.Size(144, 13);
             this.lblChoisirMateriel.TabIndex = 0;
             this.lblChoisirMateriel.Text = "Choisir le matériel à attribuer :\r\n";
-            // 
-            // listBoxSelectionMateriels
-            // 
-            this.listBoxSelectionMateriels.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxSelectionMateriels.FormattingEnabled = true;
-            this.listBoxSelectionMateriels.HorizontalScrollbar = true;
-            this.listBoxSelectionMateriels.Location = new System.Drawing.Point(15, 37);
-            this.listBoxSelectionMateriels.Name = "listBoxSelectionMateriels";
-            this.listBoxSelectionMateriels.Size = new System.Drawing.Size(234, 121);
-            this.listBoxSelectionMateriels.TabIndex = 18;
-            this.listBoxSelectionMateriels.Click += new System.EventHandler(this.listBoxSelectionMateriels_Click);
             // 
             // mTxtBoxNumtel
             // 
@@ -85,45 +73,6 @@
             this.lblNumeroTel.Size = new System.Drawing.Size(144, 16);
             this.lblNumeroTel.TabIndex = 76;
             this.lblNumeroTel.Text = "Numéro de téléphone :";
-            // 
-            // textBoxNumSerie
-            // 
-            this.textBoxNumSerie.Location = new System.Drawing.Point(15, 241);
-            this.textBoxNumSerie.MaxLength = 17;
-            this.textBoxNumSerie.Name = "textBoxNumSerie";
-            this.textBoxNumSerie.ReadOnly = true;
-            this.textBoxNumSerie.Size = new System.Drawing.Size(189, 20);
-            this.textBoxNumSerie.TabIndex = 73;
-            // 
-            // textBoxTypeMateriel
-            // 
-            this.textBoxTypeMateriel.Location = new System.Drawing.Point(15, 199);
-            this.textBoxTypeMateriel.MaxLength = 10;
-            this.textBoxTypeMateriel.Name = "textBoxTypeMateriel";
-            this.textBoxTypeMateriel.ReadOnly = true;
-            this.textBoxTypeMateriel.Size = new System.Drawing.Size(189, 20);
-            this.textBoxTypeMateriel.TabIndex = 72;
-            // 
-            // lblNumeroSerie
-            // 
-            this.lblNumeroSerie.AutoSize = true;
-            this.lblNumeroSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroSerie.Location = new System.Drawing.Point(12, 222);
-            this.lblNumeroSerie.Name = "lblNumeroSerie";
-            this.lblNumeroSerie.Size = new System.Drawing.Size(114, 16);
-            this.lblNumeroSerie.TabIndex = 75;
-            this.lblNumeroSerie.Text = "Numéro de série :";
-            // 
-            // lblTypeMateriel
-            // 
-            this.lblTypeMateriel.AutoSize = true;
-            this.lblTypeMateriel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblTypeMateriel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTypeMateriel.Location = new System.Drawing.Point(12, 180);
-            this.lblTypeMateriel.Name = "lblTypeMateriel";
-            this.lblTypeMateriel.Size = new System.Drawing.Size(97, 16);
-            this.lblTypeMateriel.TabIndex = 74;
-            this.lblTypeMateriel.Text = "Type Matériel :";
             // 
             // lblChoixTechnicien
             // 
@@ -149,7 +98,7 @@
             this.dgvListeTechniciens.Name = "dgvListeTechniciens";
             this.dgvListeTechniciens.ReadOnly = true;
             this.dgvListeTechniciens.RowHeadersVisible = false;
-            this.dgvListeTechniciens.Size = new System.Drawing.Size(203, 121);
+            this.dgvListeTechniciens.Size = new System.Drawing.Size(240, 121);
             this.dgvListeTechniciens.TabIndex = 79;
             this.dgvListeTechniciens.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeTechniciens_CellClick);
             // 
@@ -180,25 +129,52 @@
             this.btnAttribuerMateriel.Name = "btnAttribuerMateriel";
             this.btnAttribuerMateriel.Size = new System.Drawing.Size(164, 52);
             this.btnAttribuerMateriel.TabIndex = 80;
-            this.btnAttribuerMateriel.Text = "Attribuer matériel";
+            this.btnAttribuerMateriel.Text = "Assigner matériel";
             this.btnAttribuerMateriel.UseVisualStyleBackColor = true;
             this.btnAttribuerMateriel.Click += new System.EventHandler(this.btnAttribuerMateriel_Click);
+            // 
+            // dgvListeMateriel
+            // 
+            this.dgvListeMateriel.AllowUserToAddRows = false;
+            this.dgvListeMateriel.AllowUserToDeleteRows = false;
+            this.dgvListeMateriel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvListeMateriel.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dgvListeMateriel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListeMateriel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Type,
+            this.NumSerie});
+            this.dgvListeMateriel.Location = new System.Drawing.Point(15, 37);
+            this.dgvListeMateriel.Name = "dgvListeMateriel";
+            this.dgvListeMateriel.ReadOnly = true;
+            this.dgvListeMateriel.RowHeadersVisible = false;
+            this.dgvListeMateriel.RowHeadersWidth = 40;
+            this.dgvListeMateriel.Size = new System.Drawing.Size(240, 121);
+            this.dgvListeMateriel.TabIndex = 81;
+            this.dgvListeMateriel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListeMateriel_CellClick);
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // NumSerie
+            // 
+            this.NumSerie.HeaderText = "N° Série";
+            this.NumSerie.Name = "NumSerie";
+            this.NumSerie.ReadOnly = true;
             // 
             // AffecterMaterielFormulaire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 315);
+            this.ClientSize = new System.Drawing.Size(565, 314);
+            this.Controls.Add(this.dgvListeMateriel);
             this.Controls.Add(this.btnAttribuerMateriel);
             this.Controls.Add(this.dgvListeTechniciens);
             this.Controls.Add(this.lblChoixTechnicien);
             this.Controls.Add(this.mTxtBoxNumtel);
             this.Controls.Add(this.lblNumeroTel);
-            this.Controls.Add(this.textBoxNumSerie);
-            this.Controls.Add(this.textBoxTypeMateriel);
-            this.Controls.Add(this.lblNumeroSerie);
-            this.Controls.Add(this.lblTypeMateriel);
-            this.Controls.Add(this.listBoxSelectionMateriels);
             this.Controls.Add(this.lblChoisirMateriel);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(581, 353);
@@ -208,6 +184,7 @@
             this.Text = "Attribuer materiel à un technicien";
             this.Load += new System.EventHandler(this.AffecterMaterielFormulaire_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeTechniciens)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListeMateriel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,18 +193,16 @@
         #endregion
 
         private System.Windows.Forms.Label lblChoisirMateriel;
-        private System.Windows.Forms.ListBox listBoxSelectionMateriels;
         private System.Windows.Forms.MaskedTextBox mTxtBoxNumtel;
         private System.Windows.Forms.Label lblNumeroTel;
-        private System.Windows.Forms.TextBox textBoxNumSerie;
-        private System.Windows.Forms.TextBox textBoxTypeMateriel;
-        private System.Windows.Forms.Label lblNumeroSerie;
-        private System.Windows.Forms.Label lblTypeMateriel;
         private System.Windows.Forms.Label lblChoixTechnicien;
         private System.Windows.Forms.DataGridView dgvListeTechniciens;
         private System.Windows.Forms.Button btnAttribuerMateriel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLoginT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrenomTech;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNomTech;
+        private System.Windows.Forms.DataGridView dgvListeMateriel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumSerie;
     }
 }

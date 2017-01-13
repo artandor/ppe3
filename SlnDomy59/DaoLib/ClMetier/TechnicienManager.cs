@@ -127,7 +127,7 @@ namespace LibDao
                 // Lecture de tous les enregistrements contenus dans le DataRead
                 while (dataReader.Read())
                 {
-                    // On rempli chque attribut de un Technicien
+                    // On rempli chaque attribut de un Technicien
                     listTechnicien.Add(new Technicien()
                     {
                         Nom = (String)dataReader["nom"],

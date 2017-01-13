@@ -76,6 +76,47 @@ namespace LibDao
             return materiel;
         }
 
+        public bool affectationMaterielTechnicien(ref Materiel materiel, ref Technicien technicien)
+        {
+            bool retour = false;
+
+            // Initialisation de la commande associée à la connexion en cours
+            SqlCommand sqlCmd = new SqlCommand();
+            sqlCmd.Connection = sqlConnexion;
+
+            // Type de commande de commande et DateRemise de la procédure appelée
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.CommandText = @"spAffectationMatériel";
+            // paramètres passés à la procédure stockée
+            sqlCmd.Parameters.Add("@pIdMateriel", SqlDbType.Int).Value = materiel.IdMateriel;
+            sqlCmd.Parameters.Add("@pNumeroTel", SqlDbType.NVarChar, 12).Value = materiel.NumeroTel;
+            sqlCmd.Parameters.Add("@pImei", SqlDbType.NVarChar, 17).Value = materiel.Imei;
+            sqlCmd.Parameters.Add("@pIdGoogle", SqlDbType.Text).Value = materiel.IdGoogle;
+            sqlCmd.Parameters.Add("@pLoginT", SqlDbType.NVarChar, 25).Value = technicien.LoginT;
+            sqlCmd.Parameters.Add("@pLoginE", SqlDbType.NVarChar, 25).Value = materiel.FkLoginE;
+            sqlCmd.Parameters.Add("@pEtatMateriel", SqlDbType.NVarChar, 15).Value = materiel.EtatMateriel;
+
+            // On persiste les data
+            try
+            {
+                // On se connecte
+                if (sqlConnexion.State != ConnectionState.Open)
+                {
+                    sqlConnexion.Open();
+                }
+                // On appelle la procédure stockée
+                if ((int)sqlCmd.ExecuteNonQuery() == -1)
+                {
+                    retour = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dispose();
+                throw new Exception("Erreur affectation d'un Materiel \n" + ex.Message);
+            }
+            return retour;
+        }
         public bool supprimerMateriel(Materiel prmMateriel)
         {
             prmMateriel = getMateriel(ref prmMateriel); // On récupère un objet complet
